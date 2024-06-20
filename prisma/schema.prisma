@@ -18,24 +18,34 @@ model User {
   imageUrl    String?
   posts       Post[]
   comments    Comment[]
+  likes       Like[]
+  followers   Follow[]  @relation("Follower")
+  followings  Follow[]  @relation("Following")
+  notifications Notification[]
+  views       View[]
+  subscriptions Subscription[]
   createdAt   DateTime  @default(now())
   updatedAt   DateTime  @updatedAt
 }
 
 model Post {
-  id          Int       @id @default(autoincrement())
-  title       String
-  content     String
-  published   Boolean   @default(false)
-  authorId    Int
-  author      User      @relation(fields: [authorId], references: [id])
-  comments    Comment[]
-  tags        PostTag[]
-  categories  PostCategory[]
-  communityId Int
-  community   Community @relation(fields: [communityId], references: [id])
-  createdAt   DateTime  @default(now())
-  updatedAt   DateTime  @updatedAt
+  id             Int          @id @default(autoincrement())
+  title          String
+  content        String
+  published      Boolean      @default(false)
+  authorId       Int
+  author         User         @relation(fields: [authorId], references: [id])
+  comments       Comment[]
+  tags           PostTag[]
+  categories     PostCategory[]
+  likes          Like[]
+  views          View[]
+  communityId    Int
+  community      Community    @relation(fields: [communityId], references: [id])
+  newsletterId   Int?
+  newsletter     Newsletter?  @relation(fields: [newsletterId], references: [id])
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
 }
 
 model Comment {
@@ -86,4 +96,62 @@ model PostCategory {
   category   Category @relation(fields: [categoryId], references: [id])
 
   @@id([postId, categoryId])
+}
+
+model Like {
+  id        Int      @id @default(autoincrement())
+  userId    Int
+  postId    Int
+  user      User     @relation(fields: [userId], references: [id])
+  post      Post     @relation(fields: [postId], references: [id])
+  createdAt DateTime @default(now())
+}
+
+model Follow {
+  id          Int      @id @default(autoincrement())
+  followerId  Int
+  followingId Int
+  follower    User     @relation("Follower", fields: [followerId], references: [id])
+  following   User     @relation("Following", fields: [followingId], references: [id])
+  createdAt   DateTime @default(now())
+
+  @@unique([followerId, followingId])
+}
+
+model Notification {
+  id          Int      @id @default(autoincrement())
+  message     String
+  userId      Int
+  user        User     @relation(fields: [userId], references: [id])
+  createdAt   DateTime @default(now())
+}
+
+model View {
+  id        Int      @id @default(autoincrement())
+  userId    Int
+  postId    Int
+  user      User     @relation(fields: [userId], references: [id])
+  post      Post     @relation(fields: [postId], references: [id])
+  createdAt DateTime @default(now())
+}
+
+model Subscription {
+  id            Int          @id @default(autoincrement())
+  userId        Int
+  newsletterId  Int
+  user          User         @relation(fields: [userId], references: [id])
+  newsletter    Newsletter   @relation(fields: [newsletterId], references: [id])
+  createdAt     DateTime     @default(now())
+
+  @@unique([userId, newsletterId])
+}
+
+model Newsletter {
+  id            Int            @id @default(autoincrement())
+  name          String         @unique
+  description   String?
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
+  posts         Post[]
+  subscribers   Subscription[]
 }
