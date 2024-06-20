@@ -1,6 +1,6 @@
 import React from 'react'
 import GetEmail from './GetEmail'
-import Reccomendations from './reccomendations'
+import Reccomendations from './Reccomendations'
 
 export default function MainPost() {
   return (
