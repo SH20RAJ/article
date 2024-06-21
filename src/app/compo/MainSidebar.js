@@ -1,9 +1,9 @@
 import React from 'react'
 
-export default function page() {
+export default function MainSidebar() {
   return (
     <div>
-      Dashboard
+      Main Sidebar
     </div>
   )
 }

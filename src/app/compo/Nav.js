@@ -1,7 +1,9 @@
 import Link from "next/link";
 import getUserSession from "../(auth)/(funcs)/getUserSession";
 import { Button } from "@/components/ui/button";
-import { PencilIcon } from "lucide-react";
+import { LogOutIcon, PencilIcon, Search } from "lucide-react";
+import { ProfileAvatar } from "./ProfileAvatar";
+import { Input } from "@/components/ui/input";
 
 export default async function Nav() {
   let user = await getUserSession();
@@ -20,19 +22,24 @@ export default async function Nav() {
               className="h-14 sm:hidden cursor-pointer"
               href="/"
             />
-            <div className="hidden md:inline-flex items-center space-x-5">
-              <h3 className="cursor-pointer">About</h3>
-              <h3 className="cursor-pointer">Contact</h3>
-              <h3 className="bg-green-600 cursor-pointer rounded-full hover:bg-green-700 duration-500  px-4 py-2 text-white">
-                Follow
-              </h3>
+           
+          </div>
+          <div className="flex items-center space-x-0 sm:space-x-5">
+            
+            <div className="hidden md:inline-flex items-center space-x-5 ">
+              {/* Search bar */}
+              <div className="flex items-center space-x-5 ">
+                <Input
+                  type="search"
+                  placeholder="Search"
+                  className="w-[400px]"
+                />
+                <Button variant="outline" className=" m-0"><Search/></Button>
+              </div>
             </div>
           </div>
           <div className="flex items-center space-x-5 text-green-600 ">
-          {
-            user ? <LoggedIn /> : <LoggedOut />
-          }
-
+            {user ? <LoggedIn /> : <LoggedOut />}
           </div>
         </header>
         <div className="text-center">
@@ -44,27 +51,25 @@ export default async function Nav() {
   );
 }
 
-
-
 const LoggedIn = () => {
   return (
     <>
-    {/* Create new post btn */}
+      {/* Create new post btn */}
       <Link href="/create" className=" flex align-baseline">
-      <Button variant="outline"><PencilIcon className=" w-4 h-4 mr-2"/> Create</Button>
+        <Button variant="outline">
+          <PencilIcon className=" w-4 h-4 sm:mr-2" />{" "}
+          <p className="hidden sm:block">Create</p>
+        </Button>
       </Link>
-      <Link href="/dashboard">
-        <h3 className="cursor-pointer">Dashboard</h3>
-      </Link>
-      <Link href="/profile">
-        <h3 className="cursor-pointer">Profile</h3>
-      </Link>
+      <ProfileAvatar />
       <Link href="/logout">
-        <h3 className="cursor-pointer">Logout</h3>
+        <Button className="p-2" variant="outline">
+          <LogOutIcon className=" w-4 h-4 mr-2" />
+        </Button>
       </Link>
     </>
   );
-}
+};
 
 const LoggedOut = () => {
   return (
@@ -77,4 +82,6 @@ const LoggedOut = () => {
       </Link>
     </>
   );
-}
+};
+
+// Avatar component from ShadCN
