@@ -1,10 +1,14 @@
+'use client';
 import { Editor } from "novel-lightweight";
+import { useState } from "react";
 
 export default function App() {
   const [data, setData] = useState("");
 
   return (
-    <Editor
+    <>
+    <h1>Editor</h1>
+     <Editor
       defaultValue={data}
       disableLocalStorage={true}
       onUpdate={(editor) => {
@@ -18,5 +22,7 @@ export default function App() {
         return "www.example.com/failed-upload.png";
       }}
     />
+    </>
+   
   );
 }
