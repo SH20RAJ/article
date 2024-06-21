@@ -1,6 +1,10 @@
 import Link from "next/link";
+import getUserSession from "../(auth)/(funcs)/getUserSession";
+import { Button } from "@/components/ui/button";
+import { PencilIcon } from "lucide-react";
 
-export default function Nav() {
+export default async function Nav() {
+  let user = await getUserSession();
   return (
     <>
       <div className="bg-white fixed inset-x-0 top-0 shadow-lg z-10">
@@ -25,14 +29,10 @@ export default function Nav() {
             </div>
           </div>
           <div className="flex items-center space-x-5 text-green-600 ">
-            <div className="flex justify-center items-center space-x-5">
-              
-              <h3 className="cursor-pointer"><a href={"/join"}>Sign In</a></h3>
-              
-              <h3 className="border px-4 py-1 cursor-pointer hover:bg-green-600 hover:text-white duration-200 rounded-full border-green-600">
-                Get Started
-              </h3>
-            </div>
+          {
+            user ? <LoggedIn /> : <LoggedOut />
+          }
+
           </div>
         </header>
         <div className="text-center">
@@ -40,6 +40,41 @@ export default function Nav() {
           <div className="scale-0  ease-in-out duration-500 h-[600px] w-[500px]   rounded-lg fixed -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 bg-white shadow-xl" />
         </div>
       </div>
+    </>
+  );
+}
+
+
+
+const LoggedIn = () => {
+  return (
+    <>
+    {/* Create new post btn */}
+      <Link href="/create" className=" flex align-baseline">
+      <Button variant="outline"><PencilIcon className=" w-4 h-4 mr-2"/> Create</Button>
+      </Link>
+      <Link href="/dashboard">
+        <h3 className="cursor-pointer">Dashboard</h3>
+      </Link>
+      <Link href="/profile">
+        <h3 className="cursor-pointer">Profile</h3>
+      </Link>
+      <Link href="/logout">
+        <h3 className="cursor-pointer">Logout</h3>
+      </Link>
+    </>
+  );
+}
+
+const LoggedOut = () => {
+  return (
+    <>
+      <Link href="/login">
+        <h3 className="cursor-pointer">Login</h3>
+      </Link>
+      <Link href="/join">
+        <h3 className="cursor-pointer">Register</h3>
+      </Link>
     </>
   );
 }
