@@ -5,6 +5,7 @@ import LeftSideBar from "./post/[id]/LeftSideBar";
 import MainSidebar from "@/_compo/homepage/MainSidebar";
 import { getDate } from "@/lib/funs";
 import PostList from "@/_compo/homepage/PostList";
+import SideBar from "./post/[id]/SideBar";
 // import MainSidebar from "@/_compo/homepage/MainSidebar";
 
 export default function page() {
@@ -16,14 +17,11 @@ export default function page() {
           <div className="sidebar hidden sm:flex  w-3/12 m-4 ">
             <MainSidebar/>
           </div>
-        <div className=" w-full ">
+        <div className=" w-full  overflow-auto h-screen no-scrollbar">
           <PostList/>
         </div>
-        <div className="rightbar hidden sm:flex w-4/12 border-collapse border ">RightBar
-        
-        {
-          getDate("2021-09-01T00:00:00.000Z")
-        }
+        <div className="rightbar hidden sm:flex w-4/12 border-collapse  ">
+
         </div>
           
         </main>

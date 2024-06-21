@@ -1,5 +1,6 @@
 import { samplepost } from "@/_consts/feeds";
-import { getDate } from "@/lib/funs";
+import { getDate, makeSlug } from "@/lib/funs";
+import Link from "next/link";
 
 export default function PostList() {
   return (
@@ -22,9 +23,11 @@ export const Post = ({post}) => {
           <div className="space-y-2 flex flex-col cursor-pointer">
             <div>
               <p className="text-sm text-gray-500">{getDate(post.date)}</p>
+              <Link href={"/post/"+makeSlug(post.title)}>
               <p className="sm:text-[21px] text-[18px] font-semibold ">
                 {post.title}
               </p>
+              </Link>
             </div>
             <div className="sm:line-clamp-3 line-clamp-2 text-[13px] sm:text-[15px] text-gray-900">
               {" "}
