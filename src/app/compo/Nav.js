@@ -1,4 +1,4 @@
-import React from "react";
+import Link from "next/link";
 
 export default function Nav() {
   return (
@@ -26,7 +26,9 @@ export default function Nav() {
           </div>
           <div className="flex items-center space-x-5 text-green-600 ">
             <div className="flex justify-center items-center space-x-5">
-              <h3 className="cursor-pointer">Sign In</h3>
+              
+              <h3 className="cursor-pointer"><a href={"/join"}>Sign In</a></h3>
+              
               <h3 className="border px-4 py-1 cursor-pointer hover:bg-green-600 hover:text-white duration-200 rounded-full border-green-600">
                 Get Started
               </h3>

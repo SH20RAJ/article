@@ -1,32 +1,73 @@
 import NextAuth from "next-auth";
 import GitHub from "next-auth/providers/github";
 import Google from "next-auth/providers/google";
-import { PrismaAdapter } from "@auth/prisma-adapter";
-import prisma from "@/prisma";
+import { PrismaAdapter } from "@auth/prisma-adapter"
+import { PrismaClient } from "@prisma/client"
+const prisma = new PrismaClient()
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
-  adapter: PrismaAdapter(prisma),
+  // adapter: PrismaAdapter(prisma),
   providers: [GitHub, Google],
   callbacks: {
-    async session({ session, user }) {
-      session.user.id = user.id;
-      return session;
-    },
-    async signIn({ user, account, profile }) {
-      console.log("User:", user);
-      console.log("Account:", account);
-      console.log("Profile:", profile);
-
-      if (!user.password) {
-        delete user.password;
+    async signIn({ account, profile }) {
+      if (!profile?.email) {
+        throw new Error('No profile')
       }
-      return true;
+  
+      let baseUsername = profile.name.replace(/\s+/g, '').toLowerCase()
+      let username = baseUsername
+      let usernameExists = true
+      let counter = 1
+  
+      while (usernameExists) {
+        const existingUser = await prisma.user.findFirst({
+          where: { username },
+        })
+  
+        if (!existingUser) {
+          usernameExists = false
+        } else {
+          username = `${baseUsername}${counter}`
+          counter++
+        }
+      }
+  
+      const password = Math.random().toString(36).slice(-8)
+  
+      await prisma.user.upsert({
+        where: { email: profile.email },
+        create: {
+          email: profile.email,
+          name: profile.name,
+          username,
+          password,
+          image: profile.picture,
+        },
+        update: {
+          name: profile.name,
+          image: profile.picture,
+        },
+      })
+  
+      return true
+    },
+    async redirect() {
+      return "/"
+    },
+    async session({ session, token }) {
+      session.userId = token.id
+      return session
     },
     async jwt({ token, user }) {
       if (user) {
-        token.id = user.id;
+        token.id = user.id
       }
-      return token;
+      return token
     },
   },
+  session: {
+    strategy: 'jwt',
+  }
 });
+
+

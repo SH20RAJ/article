@@ -1,14 +1,13 @@
-import { auth } from "@/auth"
+
+import getUserSession from "../(funcs)/getUserSession";
+
+
  
 export default async function UserAvatar() {
-  const session = await auth()
- 
-  if (!session.user) return null
- 
   return (
     <div>
       {
-        JSON.stringify(session)
+        JSON.stringify(await getUserSession())
       }
     </div>
   )
