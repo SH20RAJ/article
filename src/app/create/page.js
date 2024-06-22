@@ -1,5 +1,5 @@
 import React from "react";
-import Nav from "../compo/Nav";
+import Nav from "../_compo/Nav";
 import Editor from "./Editor";
 import {
   Drawer,
@@ -13,8 +13,12 @@ import {
 } from "@/components/ui/drawer";
 import { Button } from "@/components/ui/button";
 import { SelectCommunity } from "@/_compo/create/selectcommunity";
+import getUserSession from "../(auth)/(funcs)/getUserSession";
+import { redirect } from "next/navigation";
 
-export default function page() {
+export default async function page() {
+    let session = await getUserSession()
+    if(!session?.user) redirect("/")
   return (
     <div>
       <Nav />

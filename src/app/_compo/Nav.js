@@ -4,22 +4,23 @@ import { Button } from "@/components/ui/button";
 import { LogOutIcon, PencilIcon, Search } from "lucide-react";
 import { ProfileAvatar } from "./ProfileAvatar";
 import { Input } from "@/components/ui/input";
+import { ModeToggle } from "./ModeToggel";
 
 export default async function Nav() {
   let user = await getUserSession();
   return (
     <>
-      <div className="bg-white mb-10 inset-x-0 top-0 shadow-lg z-10">
+      <div className="bg-white mb-10 inset-x-0 top-0 shadow-lg z-10 dark:bg-black dark:text-white">
         <header className="flex justify-between font-poppins items-center p-3 sm:p-5 wrapper">
           <div className="flex items-center space-x-0 sm:space-x-5">
             <Link href={"/"}>
             <img
-              src="./SHaDE.png"
+              src="/md-logo-dark.png"
               className="h-10 hidden sm:block cursor-pointer"
               href="/"
               />
             <img
-              src="/logo.png"
+              src="/logo-dark.png"
               className="h-14 sm:hidden cursor-pointer"
               href="/"
               />
@@ -64,11 +65,8 @@ const LoggedIn = () => {
         </Button>
       </Link>
       <ProfileAvatar />
-      <Link href="/logout">
-        <Button className="p-2" variant="outline">
-          <LogOutIcon className=" w-4 h-4 mr-2" />
-        </Button>
-      </Link>
+      <ModeToggle />
+      
     </>
   );
 };
@@ -87,3 +85,5 @@ const LoggedOut = () => {
 };
 
 // Avatar component from ShadCN
+
+

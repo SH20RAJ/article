@@ -1,6 +1,6 @@
-import Nav from "./compo/Nav";
-import Trending from "./compo/Trending";
-import Posts from "./compo/Posts";
+import Nav from "./_compo/Nav";
+import Trending from "./_compo/Trending";
+import Posts from "./_compo/Posts";
 import LeftSideBar from "./post/[id]/LeftSideBar";
 import MainSidebar from "@/_compo/homepage/MainSidebar";
 import { getDate } from "@/lib/funs";

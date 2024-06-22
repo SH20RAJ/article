@@ -1,7 +1,7 @@
 'use client';
 import { Editor } from "novel-lightweight";
 import { useState } from "react";
-import Nav from "../compo/Nav";
+import Nav from "../_compo/Nav";
 
 export default function App() {
   const [data, setData] = useState("");
@@ -11,7 +11,7 @@ export default function App() {
      <Editor
      className="w-full h-screen"
       defaultValue={data}
-      disableLocalStorage={true}
+      // disableLocalStorage={true}
       onUpdate={(editor) => {
         setData(editor?.storage.markdown.getMarkdown());
       }}

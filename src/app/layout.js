@@ -1,7 +1,8 @@
-import { Inter } from "next/font/google";
+import {  Poppins } from "next/font/google";
 import "./globals.css";
+import { ThemeProvider } from "./_compo/themeprovider";
 
-const inter = Inter({ subsets: ["latin"] });
+const poppins = Poppins({ subsets: ["latin"] , weight : "200"});
 
 export const metadata = {
   title: "Shade Article || Read Write Enjoy",
@@ -10,8 +11,16 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
+    <html lang="en" suppressHydrationWarning>
+      <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            
+      <body className={poppins.className}>{children}</body>
+          </ThemeProvider>
     </html>
   );
 }
