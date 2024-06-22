@@ -13,7 +13,7 @@ export default function page() {
     <>
       <main className="font-poppins  ">
         <Nav/>
-        <main className=" flex mt-24 min-h-screen gap-4">
+        <main className=" flex  min-h-screen gap-4">
           <div className="sidebar hidden sm:flex  w-3/12 m-4 ">
             <MainSidebar/>
           </div>

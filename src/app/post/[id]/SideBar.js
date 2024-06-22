@@ -42,7 +42,7 @@ export default function SideBar() {
               <div>
                 <img
                   className="h-24 w-24 object-cover rounded-full"
-                  src="https://cdn.sanity.io/images/gyc4tcpa/production/ad62f7a815fd2aebade9b399a124eefd80ce0e67-1000x1000.png"
+                  src="/logo.png"
                   alt
                 />
                 <h1 className="font-bold py-4 text-gray-900">
@@ -96,7 +96,7 @@ export default function SideBar() {
                           <img
                             alt="r"
                             className="h-6 rounded-full"
-                            src="https://cdn.sanity.io/images/gyc4tcpa/production/ad62f7a815fd2aebade9b399a124eefd80ce0e67-1000x1000.png"
+                            src="/logo.png"
                           />
                           <span className="text-sm font-normal capitalize">
                             User's Name
@@ -126,7 +126,7 @@ export default function SideBar() {
                           <img
                             alt="r"
                             className="h-6 rounded-full"
-                            src="https://cdn.sanity.io/images/gyc4tcpa/production/ad62f7a815fd2aebade9b399a124eefd80ce0e67-1000x1000.png"
+                            src="/logo.png"
                           />
                           <span className="text-sm font-normal capitalize">
                             User's Name
@@ -156,7 +156,7 @@ export default function SideBar() {
                           <img
                             alt="r"
                             className="h-6 rounded-full"
-                            src="https://cdn.sanity.io/images/gyc4tcpa/production/ad62f7a815fd2aebade9b399a124eefd80ce0e67-1000x1000.png"
+                            src="/logo.png"
                           />
                           <span className="text-sm font-normal capitalize">
                             User's Name
@@ -171,7 +171,7 @@ export default function SideBar() {
                       <div className="h-16 w-16 flex justify-start">
                         <img
                           className="h-full w-full rounded-md cursor-pointer object-cover group-hover:scale-105 transition-transform duration-200 ease-in-out"
-                          src="https://cdn.sanity.io/images/gyc4tcpa/production/4d1a6db90cec35063c29e64b4abd3ac3bca39daa-1000x582.jpg"
+                          src="/logo.png"
                           alt="image"
                         />
                       </div>
@@ -186,7 +186,7 @@ export default function SideBar() {
                           <img
                             alt="r"
                             className="h-6 rounded-full"
-                            src="https://cdn.sanity.io/images/gyc4tcpa/production/ad62f7a815fd2aebade9b399a124eefd80ce0e67-1000x1000.png"
+                            src="/logo.png"
                           />
                           <span className="text-sm font-normal capitalize">
                             User's Name
@@ -216,7 +216,7 @@ export default function SideBar() {
                           <img
                             alt="r"
                             className="h-6 rounded-full"
-                            src="https://cdn.sanity.io/images/gyc4tcpa/production/ad62f7a815fd2aebade9b399a124eefd80ce0e67-1000x1000.png"
+                            src="/logo.png"
                           />
                           <span className="text-sm font-normal capitalize">
                             User's Name

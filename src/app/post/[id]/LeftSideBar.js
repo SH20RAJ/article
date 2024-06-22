@@ -10,7 +10,7 @@ export default function LeftSideBar() {
               <Link href="/">
               <img
                 className="h-14"
-                src="https://cdn3.iconfinder.com/data/icons/social-media-black-white-2/1151/Medium_logo_-_black-512.png"
+                src="/logo.png"
                 alt
                 href="/"
               />

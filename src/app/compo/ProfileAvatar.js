@@ -9,7 +9,7 @@ import {
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import Link from "next/link";
 import getUserSession from "../(auth)/(funcs)/getUserSession";
-import { BookDashed, User2Icon } from "lucide-react";
+import { BookDashed, Moon, User2Icon } from "lucide-react";
 
 export const ProfileAvatar = async () => {
     let user = await getUserSession();
@@ -26,8 +26,9 @@ export const ProfileAvatar = async () => {
         <hr />
         <p className=" text-xs pl-2 font-bold my-2 ">✨ {user.user.name}</p>
         <DropdownMenuSeparator />
-        <DropdownMenuItem><User2Icon size={15} className="mr-1"/> Profile</DropdownMenuItem>
+        <Link href="/profile"><DropdownMenuItem><User2Icon size={15} className="mr-1"/> Profile</DropdownMenuItem></Link>
         <Link href="/dashboard"><DropdownMenuItem><BookDashed size={15} className="mr-1"/> Dashboard</DropdownMenuItem></Link>
+        <Link href="#"><DropdownMenuItem><Moon size={15} className="mr-1"/> Dark Mode</DropdownMenuItem></Link>
         {/* <DropdownMenuItem>Team</DropdownMenuItem>
         <DropdownMenuItem>Subscription</DropdownMenuItem> */}
       </DropdownMenuContent>

@@ -11,7 +11,7 @@ export default function MainPost() {
                 <div>
                   <img
                     className="h-12 w-12 object-cover rounded-full"
-                    src="https://cdn.sanity.io/images/gyc4tcpa/production/ad62f7a815fd2aebade9b399a124eefd80ce0e67-1000x1000.png"
+                    src="/logo.png"
                     alt
                   />
                 </div>

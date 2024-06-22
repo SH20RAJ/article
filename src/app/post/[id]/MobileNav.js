@@ -14,7 +14,7 @@ export default function MobileNav() {
                     href="/"
                   />
                   <img
-                    src="https://cdn3.iconfinder.com/data/icons/social-media-black-white-2/1151/Medium_logo_-_black-512.png"
+                    src="/logo.png"
                     alt
                     className="h-14 sm:hidden cursor-pointer"
                     href="/"

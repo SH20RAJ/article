@@ -9,19 +9,21 @@ export default async function Nav() {
   let user = await getUserSession();
   return (
     <>
-      <div className="bg-white fixed inset-x-0 top-0 shadow-lg z-10">
+      <div className="bg-white mb-10 inset-x-0 top-0 shadow-lg z-10">
         <header className="flex justify-between font-poppins items-center p-3 sm:p-5 wrapper">
           <div className="flex items-center space-x-0 sm:space-x-5">
+            <Link href={"/"}>
             <img
-              src="https://miro.medium.com/max/8978/1*s986xIGqhfsN8U--09_AdA.png"
+              src="./SHaDE.png"
               className="h-10 hidden sm:block cursor-pointer"
               href="/"
-            />
+              />
             <img
-              src="https://cdn3.iconfinder.com/data/icons/social-media-black-white-2/1151/Medium_logo_-_black-512.png"
+              src="/logo.png"
               className="h-14 sm:hidden cursor-pointer"
               href="/"
-            />
+              />
+              </Link>
            
           </div>
           <div className="flex items-center space-x-0 sm:space-x-5">

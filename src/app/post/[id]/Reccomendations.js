@@ -221,7 +221,7 @@ export default function Reccomendations() {
                     </div>
                     <img
                       className="object-cover cursor-pointer w-24 h-24 sm:w-36 ml-10 sm:h-36"
-                      src="https://cdn.sanity.io/images/gyc4tcpa/production/4d1a6db90cec35063c29e64b4abd3ac3bca39daa-1000x582.jpg"
+                      src="/logo.png"
                       alt="image"
                     />
                   </div>
