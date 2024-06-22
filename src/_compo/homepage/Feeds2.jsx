@@ -28,6 +28,7 @@ import { Button } from "@/components/ui/button"
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar"
 import { Card, CardHeader, CardContent, CardFooter, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
+import MainSidebar from "./MainSidebar"
 
 export function Feeds2() {
   return (
@@ -287,6 +288,8 @@ export function Feeds2() {
               </form>
             </CardContent>
           </Card>
+          <MainSidebar/>
+
         </div>
       </main>
       

@@ -2,7 +2,7 @@ import {  Poppins } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "./_compo/themeprovider";
 
-const poppins = Poppins({ subsets: ["latin"] , weight : "200"});
+const poppins = Poppins({ subsets: ["latin"] , weight : "400"});
 
 export const metadata = {
   title: "Shade Article || Read Write Enjoy",
