@@ -1,11 +1,8 @@
+import { Feeds2 } from "@/_compo/homepage/Feeds2";
 import Nav from "./_compo/Nav";
-import Trending from "./_compo/Trending";
-import Posts from "./_compo/Posts";
-import LeftSideBar from "./post/[id]/LeftSideBar";
 import MainSidebar from "@/_compo/homepage/MainSidebar";
-import { getDate } from "@/lib/funs";
 import PostList from "@/_compo/homepage/PostList";
-import SideBar from "./post/[id]/SideBar";
+import { Feeds1 } from "@/_compo/homepage/feeds1";
 // import MainSidebar from "@/_compo/homepage/MainSidebar";
 
 export default function page() {
@@ -13,6 +10,8 @@ export default function page() {
     <>
       <main className="font-poppins  ">
         <Nav/>
+        <Feeds1/>
+        <Feeds2/>
         <main className=" flex  min-h-screen gap-4">
           <div className="sidebar hidden sm:flex  w-3/12 m-4 ">
             <MainSidebar/>

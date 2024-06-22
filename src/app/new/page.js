@@ -1,13 +1,10 @@
-import Editor from '@/components/Editor';
+import { Theme1 } from '@/components/theme1'
+import React from 'react'
 
-
-const Home = () => {
+export default function page() {
   return (
     <div>
-      <h1>My Novel Editor</h1>
-      <Editor  />
+      <Theme1/>
     </div>
-  );
-};
-
-export default Home;
+  )
+}

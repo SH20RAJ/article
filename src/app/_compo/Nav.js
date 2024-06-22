@@ -10,7 +10,7 @@ export default async function Nav() {
   let user = await getUserSession();
   return (
     <>
-      <div className="bg-white mb-10 inset-x-0 top-0 shadow-lg z-10 dark:bg-black dark:text-white">
+      <div className="bg-white mb-10 inset-x-0 top-0 shadow-lg z-10 dark:bg-black dark:text-white bg-white border-b shadow-sm sticky top-0 z-10">
         <header className="flex justify-between font-poppins items-center p-3 sm:p-5 wrapper">
           <div className="flex items-center space-x-0 sm:space-x-5">
             <Link href={"/"}>
