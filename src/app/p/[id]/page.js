@@ -7,6 +7,7 @@ export default function page() {
     <div>
       <Nav/>
       <PostPage1/>
+      
     </div>
   )
 }

@@ -242,6 +242,12 @@ export function PostPage1() {
               </div>
             </CardContent>
           </Card>
+          <Card className="p-4 space-y-4">
+            {
+              Array(4).fill().map((_, i) => <PostCard post={_} key={i}/>)
+            }
+            <PostCard/>
+          </Card>
         </div>
         
         <div className="space-y-8">
@@ -341,6 +347,36 @@ export function PostPage1() {
       </main>
     </div>)
   );
+}
+
+
+
+export const PostCard = ({post}) => {
+  return <article className="grid grid-cols-1 md:grid-cols-[200px_1fr] gap-6">
+  <img
+    src="/placeholder.svg"
+    alt="Blog Post Image"
+    width={200}
+    height={150}
+    className="rounded-lg object-cover" />
+  <div className="space-y-2">
+    <h2 className="text-2xl font-bold">
+      <Link href="#" prefetch={false}>
+        10 Productivity Hacks to Supercharge Your Day
+      </Link>
+    </h2>
+    <p className="text-muted-foreground line-clamp-3">
+      Discover 10 simple yet effective productivity hacks that will help you get more done in less time. From
+      time-blocking to the Pomodoro technique, these tips will transform your workday.
+    </p>
+    <Link
+      href="#"
+      className="inline-flex h-9 items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
+      prefetch={false}>
+      Read More
+    </Link>
+  </div>
+</article>
 }
 
 function DiscIcon(props) {

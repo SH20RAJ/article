@@ -159,7 +159,7 @@ export default function MainSidebar() {
 
       <div className='flex flex-wrap gap-2'>
         {tags.map((tag, index) => (
-          <Link key={index} href={"/tags/"+makeSlug(tag.name)} className={badgeVariants({ variant: "outline" })+" shadow-sm"} style={{ color: tag.bgColor}}>{tag.name}</Link>
+          <Link key={index} href={"/tag/"+makeSlug(tag.name)} className={badgeVariants({ variant: "outline" })+" shadow-sm"} style={{ color: tag.bgColor}}>{tag.name}</Link>
         ))}
       </div>
 
