@@ -1,9 +1,9 @@
 import NextAuth from "next-auth";
 import GitHub from "next-auth/providers/github";
 import Google from "next-auth/providers/google";
-import { PrismaAdapter } from "@auth/prisma-adapter"
-import { PrismaClient } from "@prisma/client"
-const prisma = new PrismaClient()
+import { PrismaAdapter } from "@auth/prisma-adapter";
+import { PrismaClient } from "@prisma/client";
+const prisma = new PrismaClient();
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
   // adapter: PrismaAdapter(prisma),
@@ -11,29 +11,29 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   callbacks: {
     async signIn({ account, profile }) {
       if (!profile?.email) {
-        throw new Error('No profile')
+        throw new Error("No profile");
       }
-  
-      let baseUsername = profile.name.replace(/\s+/g, '').toLowerCase()
-      let username = baseUsername
-      let usernameExists = true
-      let counter = 1
-  
+
+      let baseUsername = profile.name.replace(/\s+/g, "").toLowerCase();
+      let username = baseUsername;
+      let usernameExists = true;
+      let counter = 1;
+
       while (usernameExists) {
         const existingUser = await prisma.user.findFirst({
           where: { username },
-        })
-  
+        });
+
         if (!existingUser) {
-          usernameExists = false
+          usernameExists = false;
         } else {
-          username = `${baseUsername}${counter}`
-          counter++
+          username = `${baseUsername}${counter}`;
+          counter++;
         }
       }
-  
-      const password = Math.random().toString(36).slice(-8)
-  
+
+      const password = Math.random().toString(36).slice(-8);
+
       let user = await prisma.user.upsert({
         where: { email: profile.email },
         create: {
@@ -47,29 +47,27 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
           name: profile.name,
           image: profile.picture,
         },
-      })
+      });
       // console.log("session",session);
-      return true
+      return true;
     },
     async redirect() {
-      return "/"
+      return "/";
     },
     async session(props) {
       // console.log("props", props);
-      const { session, token } = props
-      session.userId = token.id
-      return session
+      const { session, token } = props;
+      session.userId = token.id;
+      return session;
     },
     async jwt({ token, user }) {
       if (user) {
-        token.id = user.id
+        token.id = user.id;
       }
-      return token
+      return token;
     },
   },
   session: {
-    strategy: 'jwt',
-  }
+    strategy: "jwt",
+  },
 });
-
-

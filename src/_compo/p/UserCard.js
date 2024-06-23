@@ -7,24 +7,30 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar"
 import { Separator } from "@/components/ui/separator"
 import { Button } from "@/components/ui/button"
+import getUserSession from "@/app/(auth)/(funcs)/getUserSession"
+import Link from "next/link"
+import { makeSlug } from "@/lib/funs"
 
-export default function UserCard() {
+export default async function UserCard() {
+
+  let user = await getUserSession();
+  user = user?.user;
   return (
     <Card className="w-full  bg-background rounded-xl overflow-hidden shadow-lg">
       <div className="relative h-32 bg-muted">
-        <img src="/placeholder.svg" alt="User background" className="object-cover w-full h-full" />
+        <img src={user?.image || "/placeholder.svg"} alt="User background" className="object-cover w-full h-full" />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
           <Avatar className="w-20 h-20 border-4 border-background">
-            <AvatarImage src="/placeholder-user.jpg" />
-            <AvatarFallback>JD</AvatarFallback>
+            <AvatarImage src={user?.image || "/placeholder.svg"} />
+            <AvatarFallback>{user?.name.substring(0,2)}</AvatarFallback>
           </Avatar>
         </div>
       </div>
       <CardContent className="p-6 text-center">
         <div className="space-y-2">
-          <h3 className="text-xl font-semibold">John Doe</h3>
-          <p className="text-sm text-muted-foreground">Software Engineer</p>
-          <p className="text-sm text-muted-foreground">Passionate about building innovative software solutions.</p>
+          <Link href={"/u/"+ ((user.userName != undefined) ? (user.userName) : makeSlug(user?.email))}><h3 className="text-xl font-semibold">{user?.name}</h3></Link>
+          <p className="text-sm text-muted-foreground">{user?.occupication || "Software Engineer"}</p>
+          <p className="text-sm text-muted-foreground">{user?.bio || "Passionate about building innovative software solutions."}</p>
         </div>
         <Separator className="my-4" />
         <div className="flex items-center justify-center gap-4">

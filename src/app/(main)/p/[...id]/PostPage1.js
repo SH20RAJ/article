@@ -10,57 +10,21 @@ import { TagPostList } from "@/components/tag-post-list"
 import UserCard from "@/_compo/p/UserCard"
 var showdown  = require('showdown')
 import "@/app/showdown.css"
+import SuggestedArticles from "./SuggestedArticles";
 
-
+import { getRelativeTime, getDate } from "@/lib/funs"
+import SuggestedArticles2 from "./SuggestedArticles2"
 
 export async function PostPage1({id}) {
   let article = await getArticleWithId(id);
    let  converter = new showdown.Converter();
 
   return (
-    (<div className="flex flex-col min-h-screen">
+    (<div className="flex flex-col min-h-screen max-w-full">
       <main
-        className="flex-1 container w-full min-w-full grid grid-cols-1 md:grid-cols-[1fr_3fr_1.5fr] gap-4 m-0 p-4">
-        <div className="space-y-8 hidden md:block">
-          <Card>
-            <CardHeader>
-              <CardTitle>Suggested Articles</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="grid gap-4">
-                <div className="flex items-start gap-4">
-                  <Avatar className="w-10 h-10 border">
-                    <AvatarImage src="/placeholder-user.jpg" />
-                    <AvatarFallback>AC</AvatarFallback>
-                  </Avatar>
-                  <div>
-                    <div className="font-medium">Mastering React Hooks: A Comprehensive Guide</div>
-                    <div className="text-sm text-muted-foreground">by Acme Inc</div>
-                  </div>
-                </div>
-                <div className="flex items-start gap-4">
-                  <Avatar className="w-10 h-10 border">
-                    <AvatarImage src="/placeholder-user.jpg" />
-                    <AvatarFallback>AC</AvatarFallback>
-                  </Avatar>
-                  <div>
-                    <div className="font-medium">Optimizing Website Performance: A Step-by-Step Guide</div>
-                    <div className="text-sm text-muted-foreground">by Acme Inc</div>
-                  </div>
-                </div>
-                <div className="flex items-start gap-4">
-                  <Avatar className="w-10 h-10 border">
-                    <AvatarImage src="/placeholder-user.jpg" />
-                    <AvatarFallback>AC</AvatarFallback>
-                  </Avatar>
-                  <div>
-                    <div className="font-medium">Building a Scalable and Secure Web Application</div>
-                    <div className="text-sm text-muted-foreground">by Acme Inc</div>
-                  </div>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
+        className="flex-1 container w-full min-w-full max-w-full overflow-x-hidden md:flex gap-2 m-0 p-2">
+        <div className="space-y-8 hidden md:block w-[20%]">
+          <SuggestedArticles/>
           <Card>
             <CardHeader>
               <CardTitle>Suggested Users</CardTitle>
@@ -127,17 +91,17 @@ export async function PostPage1({id}) {
             </CardContent>
           </Card>
         </div>
-        <div className="space-y-8">
+        <div className="space-y-8 flex-1 md:w-[55%]">
           <Card>
             <CardHeader>
               <div className="flex items-center gap-4">
                 <Avatar className="w-10 h-10 border">
-                  <AvatarImage src="/placeholder-user.jpg" />
+                  <AvatarImage src={article.author.image || "/placeholder-user.jpg" } />
                   <AvatarFallback>AC</AvatarFallback>
                 </Avatar>
                 <div>
-                  <div className="font-medium">Acme Inc</div>
-                  <div className="text-sm text-muted-foreground">Published on May 1, 2023</div>
+                  <div className="font-medium">{article.author.name}</div>
+                  <div className="text-sm text-muted-foreground">Published {getRelativeTime(article.createdAt)} on {getDate(article.createdAt)}</div>
                 </div>
               </div>
               <div>
@@ -155,7 +119,10 @@ export async function PostPage1({id}) {
               <div className="flex items-center gap-4">
                 <div className="flex items-center gap-1 text-sm text-muted-foreground">
                   <TagIcon className="h-4 w-4" />
-                  <Link href="#" className="hover:underline" prefetch={false}>
+                  {
+                    article?.tags && article?.tags?.map((tag, i) => <Link key={i} href="#" className="hover:underline" prefetch={false}>{tag}</Link>)
+                  }
+                  {/* <Link href="#" className="hover:underline" prefetch={false}>
                     web-development
                   </Link>
                   <Link href="#" className="hover:underline" prefetch={false}>
@@ -163,7 +130,7 @@ export async function PostPage1({id}) {
                   </Link>
                   <Link href="#" className="hover:underline" prefetch={false}>
                     scalability
-                  </Link>
+                  </Link> */}
                 </div>
                 <div className="flex-1" />
                 <Link
@@ -175,45 +142,7 @@ export async function PostPage1({id}) {
               </div>
             </CardFooter>
           </Card>
-          <Card>
-            <CardHeader>
-              <CardTitle>Suggested Articles</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="grid gap-4">
-                <div className="flex items-start gap-4">
-                  <Avatar className="w-10 h-10 border">
-                    <AvatarImage src="/placeholder-user.jpg" />
-                    <AvatarFallback>AC</AvatarFallback>
-                  </Avatar>
-                  <div>
-                    <div className="font-medium">Mastering React Hooks: A Comprehensive Guide</div>
-                    <div className="text-sm text-muted-foreground">by Acme Inc</div>
-                  </div>
-                </div>
-                <div className="flex items-start gap-4">
-                  <Avatar className="w-10 h-10 border">
-                    <AvatarImage src="/placeholder-user.jpg" />
-                    <AvatarFallback>AC</AvatarFallback>
-                  </Avatar>
-                  <div>
-                    <div className="font-medium">Optimizing Website Performance: A Step-by-Step Guide</div>
-                    <div className="text-sm text-muted-foreground">by Acme Inc</div>
-                  </div>
-                </div>
-                <div className="flex items-start gap-4">
-                  <Avatar className="w-10 h-10 border">
-                    <AvatarImage src="/placeholder-user.jpg" />
-                    <AvatarFallback>AC</AvatarFallback>
-                  </Avatar>
-                  <div>
-                    <div className="font-medium">Building a Scalable and Secure Web Application</div>
-                    <div className="text-sm text-muted-foreground">by Acme Inc</div>
-                  </div>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
+          <SuggestedArticles/>
           <Card>
             <CardHeader>
               <CardTitle>Email Newsletter</CardTitle>
@@ -231,15 +160,10 @@ export async function PostPage1({id}) {
               </div>
             </CardContent>
           </Card>
-          <div className="p-4 space-y-4">
-            {
-              Array(4).fill().map((_, i) => <div key={i}  className="p-4 space-y-4 border shadow-xl rounded-lg"><PostCard post={_}/></div>)
-            }
-           
-          </div>
+          <SuggestedArticles2/>
         </div>
         
-        <div className="space-y-8">
+        <div className="space-y-8 md:w-[25%]">
           <UserCard/>
           <Card>
             <CardHeader>
@@ -341,33 +265,7 @@ export async function PostPage1({id}) {
 
 
 
-export const PostCard = ({post}) => {
-  return <article className="grid grid-cols-1 md:grid-cols-[200px_1fr] gap-6">
-  <img
-    src="/placeholder.svg"
-    alt="Blog Post Image"
-    width={200}
-    height={150}
-    className="rounded-lg object-cover" />
-  <div className="space-y-2">
-    <h2 className="text-2xl font-bold">
-      <Link href="#" prefetch={false}>
-        10 Productivity Hacks to Supercharge Your Day
-      </Link>
-    </h2>
-    <p className="text-muted-foreground line-clamp-3">
-      Discover 10 simple yet effective productivity hacks that will help you get more done in less time. From
-      time-blocking to the Pomodoro technique, these tips will transform your workday.
-    </p>
-    <Link
-      href="#"
-      className="inline-flex h-9 items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
-      prefetch={false}>
-      Read More
-    </Link>
-  </div>
-</article>
-}
+
 
 function DiscIcon(props) {
   return (

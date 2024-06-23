@@ -18,8 +18,7 @@ export async function generateMetadata({ params }) {
 export default function page({params}) {
   const id = params.id
   return (
-    <div>
-      <Nav/>
+    <div className=' max-w-full'>
       <PostPage1 id={id}/>
       
     </div>
