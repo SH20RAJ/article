@@ -3,6 +3,8 @@ import GitHub from "next-auth/providers/github";
 import Google from "next-auth/providers/google";
 import { PrismaAdapter } from "@auth/prisma-adapter";
 import { PrismaClient } from "@prisma/client";
+import getUserFromEmail from "./app/api/publish/getUserFromEmail";
+import { log } from "console";
 const prisma = new PrismaClient();
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
@@ -58,12 +60,18 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       // console.log("props", props);
       const { session, token } = props;
       session.userId = token.id;
+      session.username = token.username
       return session;
     },
     async jwt({ token, user }) {
+      // console.log("Ddsvdvs",token,user);
       if (user) {
+        let cs = await getUserFromEmail(token.email);
         token.id = user.id;
+        token.username = cs.username
+        token.id = cs.id
       }
+      // console.log("user", user);
       return token;
     },
   },

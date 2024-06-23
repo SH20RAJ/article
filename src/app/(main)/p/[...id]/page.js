@@ -4,6 +4,7 @@ import { PostPage1 } from './PostPage1'
 import { getArticleWithId } from './funcs/getArticleWithId';
 
 export async function generateMetadata({ params }) {
+  console.log(params);
   let id = params.id;
   let article = await getArticleWithId(id);
 
@@ -16,6 +17,7 @@ export async function generateMetadata({ params }) {
 }
 
 export default function page({params}) {
+  console.log(params);
   const id = params.id
   return (
     <div className=' max-w-full'>

@@ -28,7 +28,7 @@ export default async function UserCard() {
       </div>
       <CardContent className="p-6 text-center">
         <div className="space-y-2">
-          <Link href={"/u/"+ ((user.userName != undefined) ? (user.userName) : makeSlug(user?.email))}><h3 className="text-xl font-semibold">{user?.name}</h3></Link>
+          <Link href={"/u/"+ ((user?.userName != undefined) ? (user?.userName) : makeSlug(user?.email || " "))}><h3 className="text-xl font-semibold">{user?.name}</h3></Link>
           <p className="text-sm text-muted-foreground">{user?.occupication || "Software Engineer"}</p>
           <p className="text-sm text-muted-foreground">{user?.bio || "Passionate about building innovative software solutions."}</p>
         </div>
