@@ -29,12 +29,15 @@ import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar"
 import { Card, CardHeader, CardContent, CardFooter, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import Footer from "@/_compo/homepage/Footer"
+import Trending from "@/app/_compo/Trending"
+import { TagPostList } from "@/components/tag-post-list"
+import UserCard from "@/_compo/p/UserCard"
 
 export function PostPage1() {
   return (
     (<div className="flex flex-col min-h-screen">
       <main
-        className="flex-1 container w-full min-w-full grid grid-cols-1 md:grid-cols-[1fr_3fr_1fr] gap-4 m-0 p-4">
+        className="flex-1 container w-full min-w-full grid grid-cols-1 md:grid-cols-[1fr_3fr_1.5fr] gap-4 m-0 p-4">
         <div className="space-y-8 hidden md:block">
           <Card>
             <CardHeader>
@@ -242,15 +245,33 @@ export function PostPage1() {
               </div>
             </CardContent>
           </Card>
-          <Card className="p-4 space-y-4">
-            {
-              Array(4).fill().map((_, i) => <PostCard post={_} key={i}/>)
-            }
-            <PostCard/>
+          <Card>
+            <CardHeader>
+              <CardTitle>Email Newsletter</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="space-y-2">
+                <p className="text-muted-foreground">
+                  Subscribe to our weekly newsletter to stay up-to-date with the latest articles, tutorials, and news
+                  from the dev.to community.
+                </p>
+                <form className="flex gap-2">
+                  <Input type="email" placeholder="Enter your email" className="flex-1" />
+                  <Button type="submit">Subscribe</Button>
+                </form>
+              </div>
+            </CardContent>
           </Card>
+          <div className="p-4 space-y-4">
+            {
+              Array(4).fill().map((_, i) => <div key={i}  className="p-4 space-y-4 border shadow-xl rounded-lg"><PostCard post={_}/></div>)
+            }
+           
+          </div>
         </div>
         
         <div className="space-y-8">
+          <UserCard/>
           <Card>
             <CardHeader>
               <CardTitle>Suggested Tags</CardTitle>

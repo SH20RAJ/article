@@ -34,7 +34,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   
       const password = Math.random().toString(36).slice(-8)
   
-      await prisma.user.upsert({
+      let user = await prisma.user.upsert({
         where: { email: profile.email },
         create: {
           email: profile.email,
@@ -48,13 +48,15 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
           image: profile.picture,
         },
       })
-  
+      // console.log("session",session);
       return true
     },
     async redirect() {
       return "/"
     },
-    async session({ session, token }) {
+    async session(props) {
+      // console.log("props", props);
+      const { session, token } = props
       session.userId = token.id
       return session
     },

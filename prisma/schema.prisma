@@ -34,7 +34,7 @@ model User {
 model Post {
   id           Int            @id @default(autoincrement())
   title        String
-  content      String
+  content      String         @db.Text
   published    Boolean        @default(false)
   authorId     Int
   author       User           @relation(fields: [authorId], references: [id])
@@ -43,13 +43,14 @@ model Post {
   categories   PostCategory[]
   likes        Like[]
   views        View[]
-  communityId  Int
-  community    Community      @relation(fields: [communityId], references: [id])
+  communityId  Int?
+  community    Community?     @relation(fields: [communityId], references: [id])
   newsletterId Int?
   newsletter   Newsletter?    @relation(fields: [newsletterId], references: [id])
   createdAt    DateTime       @default(now())
   updatedAt    DateTime       @updatedAt
 }
+
 
 model Comment {
   id        Int      @id @default(autoincrement())

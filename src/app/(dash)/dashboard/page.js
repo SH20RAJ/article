@@ -1,4 +1,5 @@
 import getUserSession from '@/app/(auth)/(funcs)/getUserSession'
+import { Dashboard1 } from '@/components/dashboard1'
 import { redirect } from 'next/navigation'
 import React from 'react'
 
@@ -7,7 +8,7 @@ export default async function page() {
   if(!session?.user) redirect('/login')
   return (
     <div>
-      Dashboard
+      <Dashboard1/>
     </div>
   )
 }

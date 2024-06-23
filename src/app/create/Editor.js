@@ -1,16 +1,15 @@
 'use client';
 import { Editor } from "novel-lightweight";
-import { useState } from "react";
-import Nav from "../_compo/Nav";
 
-export default function App() {
-  const [data, setData] = useState("");
+export default function NovelEditor({setData}) {
+
+
 
   return (
     <>
      <Editor
      className="w-full h-screen"
-      defaultValue={data}
+      defaultValue={"# Write your story here\n\nThis is a simple editor that allows you to write your story in markdown. You can also add images by dragging and dropping them into the editor. \n\nHappy writing!"}
       // disableLocalStorage={true}
       onUpdate={(editor) => {
         setData(editor?.storage.markdown.getMarkdown());
