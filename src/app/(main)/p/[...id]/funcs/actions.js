@@ -74,3 +74,32 @@ export const getRandomPosts = async (limit) => {
 
     return posts;
 }
+
+
+export const getPostsByUser = async (userId) => {
+    let posts = await prisma.post.findMany({
+        where: {
+            authorId: userId
+        }
+    });
+    return posts;
+}
+
+// getLatestPosts func
+export const getLatestPosts = async (limit) => {
+    let posts = await prisma.post.findMany({
+        orderBy: {
+            createdAt: 'desc'
+        },
+        select: {
+            title: true,
+            id: true,
+            createdAt: true,
+        },
+        where: {
+            published: true
+        },
+        take: limit ? limit : 10
+    });
+    return posts;
+}

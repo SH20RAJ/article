@@ -54,7 +54,7 @@ export default function Editing() {
       })
       .catch((error) => {
         console.error("Error publishing post:", error);
-        setPublishing(false);
+        // setPublishing(false);
       });
   }
 

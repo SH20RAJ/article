@@ -10,7 +10,7 @@ export default function NovelEditor({setData}) {
      <Editor
      className="w-full h-screen"
       defaultValue={"# Write your story here\n\nThis is a simple editor that allows you to write your story in markdown. You can also add images by dragging and dropping them into the editor. \n\nHappy writing!"}
-      // disableLocalStorage={true}
+      disableLocalStorage={true}
       onUpdate={(editor) => {
         setData(editor?.storage.markdown.getMarkdown());
       }}

@@ -6,65 +6,20 @@ import { useEffect, useState } from "react";
 import { useToast } from "@/components/ui/use-toast"
 import { redirect } from "next/navigation";
 
-export default function NovelEditor({initData}) {
+export default function NovelEditor({content, setContent}) {
 
-  const { toast } = useToast()
-
-  const [data, setData] = useState(article.content);
-  const [title, setTitle] = useState(article.title);
-  // const [publishing, setPublishing] = useState(false);
-
-  useEffect(() => {
-    console.log(data);
-  }, [data]);
-
-  const handlePublish = () => {
-    setPublishing(true);
-    toast({
-        title: "Publishing post",
-        message: "Please wait while we publish your post",
-        type: "info",
-    })
-    fetch("/api/update", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        title,
-        content: data,
-        published: true,
-        communityId, // Include communityId in the request
-        postId: article.id
-      }),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        setPublishing(false);
-        toast({
-            title: "Post updated",
-            message: "Your post has been updated successfully",
-            type: "success",
-        })
-        setTimeout(() => {
-            location.href = `/p/${data.id}`
-            redirect('/post/' + data.id)
-        }, 2000);
-      })
-      .catch((error) => {
-        console.error("Error publishing post:", error);
-        setPublishing(false);
-      });
-  }
 
   return (
     <>
      <Editor
      className="w-full h-screen"
-      defaultValue={initData}
+      defaultValue={content}
+      disableLocalStorage={true}
+      // value={article.content}
+      // setEditorContent={"new here"+article.content}
       onUpdate={(editor) => {
-        setData(editor?.storage.markdown.getMarkdown());
+        // setData(editor?.storage.markdown.getMarkdown());
+        setContent(editor?.storage.markdown.getMarkdown());
       }}
       handleImageUpload={async (file) => {
         const uploads = await startUpload([file]);

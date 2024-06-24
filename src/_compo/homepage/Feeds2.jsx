@@ -29,145 +29,24 @@ import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar"
 import { Card, CardHeader, CardContent, CardFooter, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import MainSidebar from "./MainSidebar"
+import { getLatestPosts, getRandomPosts } from "@/app/(main)/p/[...id]/funcs/actions"
+import { getDate } from "@/lib/funs"
 
-export function Feeds2() {
+export async function Feeds2() {
+  let posts = await getLatestPosts()
   return (
     (<div className="flex flex-col min-h-screen">
       <main
         className="flex-1 container mx-auto grid grid-cols-1 md:grid-cols-[1fr_300px] gap-8 px-4 md:px-6 py-8">
         <div className="space-y-8">
-          <Card>
-            <CardHeader>
-              <div className="flex items-center gap-4">
-                <Avatar className="w-10 h-10 border">
-                  <AvatarImage src="/placeholder-user.jpg" />
-                  <AvatarFallback>AC</AvatarFallback>
-                </Avatar>
-                <div>
-                  <div className="font-medium">Acme Inc</div>
-                  <div className="text-sm text-muted-foreground">Published on May 1, 2023</div>
-                </div>
-              </div>
-            </CardHeader>
-            <CardContent>
-              <h2 className="text-2xl font-bold">Building a Scalable and Secure Web Application</h2>
-              <p className="mt-4 text-muted-foreground">
-                In this article, we'll explore the key considerations and best practices for building a scalable and
-                secure web application that can handle growing traffic and user demands.
-              </p>
-            </CardContent>
-            <CardFooter>
-              <div className="flex items-center gap-4">
-                <div className="flex items-center gap-1 text-sm text-muted-foreground">
-                  <TagIcon className="h-4 w-4" />
-                  <Link href="#" className="hover:underline" prefetch={false}>
-                    web-development
-                  </Link>
-                  <Link href="#" className="hover:underline" prefetch={false}>
-                    architecture
-                  </Link>
-                  <Link href="#" className="hover:underline" prefetch={false}>
-                    scalability
-                  </Link>
-                </div>
-                <div className="flex-1" />
-                <Link
-                  href="/p/2982"
-                  className="inline-flex h-8 items-center justify-center rounded-md bg-primary px-4 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
-                  prefetch={false}>
-                  Read More
-                </Link>
-              </div>
-            </CardFooter>
-          </Card>
-          <Card>
-            <CardHeader>
-              <div className="flex items-center gap-4">
-                <Avatar className="w-10 h-10 border">
-                  <AvatarImage src="/placeholder-user.jpg" />
-                  <AvatarFallback>AC</AvatarFallback>
-                </Avatar>
-                <div>
-                  <div className="font-medium">Acme Inc</div>
-                  <div className="text-sm text-muted-foreground">Published on April 15, 2023</div>
-                </div>
-              </div>
-            </CardHeader>
-            <CardContent>
-              <h2 className="text-2xl font-bold">Mastering React Hooks: A Comprehensive Guide</h2>
-              <p className="mt-4 text-muted-foreground">
-                In this comprehensive guide, we'll dive deep into the world of React Hooks, exploring their power and
-                versatility in building modern, efficient, and maintainable web applications.
-              </p>
-            </CardContent>
-            <CardFooter>
-              <div className="flex items-center gap-4">
-                <div className="flex items-center gap-1 text-sm text-muted-foreground">
-                  <TagIcon className="h-4 w-4" />
-                  <Link href="#" className="hover:underline" prefetch={false}>
-                    react
-                  </Link>
-                  <Link href="#" className="hover:underline" prefetch={false}>
-                    hooks
-                  </Link>
-                  <Link href="#" className="hover:underline" prefetch={false}>
-                    state-management
-                  </Link>
-                </div>
-                <div className="flex-1" />
-                <Link
-                  href="#"
-                  className="inline-flex h-8 items-center justify-center rounded-md bg-primary px-4 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
-                  prefetch={false}>
-                  Read More
-                </Link>
-              </div>
-            </CardFooter>
-          </Card>
-          <Card>
-            <CardHeader>
-              <div className="flex items-center gap-4">
-                <Avatar className="w-10 h-10 border">
-                  <AvatarImage src="/placeholder-user.jpg" />
-                  <AvatarFallback>AC</AvatarFallback>
-                </Avatar>
-                <div>
-                  <div className="font-medium">Acme Inc</div>
-                  <div className="text-sm text-muted-foreground">Published on March 30, 2023</div>
-                </div>
-              </div>
-            </CardHeader>
-            <CardContent>
-              <h2 className="text-2xl font-bold">Optimizing Website Performance: A Step-by-Step Guide</h2>
-              <p className="mt-4 text-muted-foreground">
-                In this article, we'll explore various techniques and best practices to optimize the performance of your
-                website, ensuring a fast and seamless user experience.
-              </p>
-            </CardContent>
-            <CardFooter>
-              <div className="flex items-center gap-4">
-                <div className="flex items-center gap-1 text-sm text-muted-foreground">
-                  <TagIcon className="h-4 w-4" />
-                  <Link href="#" className="hover:underline" prefetch={false}>
-                    performance
-                  </Link>
-                  <Link href="#" className="hover:underline" prefetch={false}>
-                    optimization
-                  </Link>
-                  <Link href="#" className="hover:underline" prefetch={false}>
-                    web-development
-                  </Link>
-                </div>
-                <div className="flex-1" />
-                <Link
-                  href="#"
-                  className="inline-flex h-8 items-center justify-center rounded-md bg-primary px-4 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
-                  prefetch={false}>
-                  Read More
-                </Link>
-              </div>
-            </CardFooter>
-          </Card>
+          <PostCard4/>
+          {
+            posts.map((post,i) => (
+              <PostCard4 key={post.id} post={post} />
+            ))
+
+          }
+          
         </div>
         <div className="space-y-8">
           <Card>
@@ -296,6 +175,59 @@ export function Feeds2() {
     </div>)
   );
 }
+
+
+export async function PostCard4({ post }) {
+  if(!post) return 
+  return <Card>
+  <CardHeader>
+    <div className="flex items-center gap-4">
+      <Avatar className="w-10 h-10 border">
+        <AvatarImage src="/placeholder-user.jpg" />
+        <AvatarFallback>AC</AvatarFallback>
+      </Avatar>
+      <div>
+        <div className="font-medium">{post?.author?.name}</div>
+        <div className="text-sm text-muted-foreground">Published on {getDate(post?.createdAt)}</div>
+      </div>
+    </div>
+  </CardHeader>
+  <CardContent>
+    <h2 className="text-2xl font-bold">
+    {/* <Link href={"/p/"+post.id+"/"+makeSlug(post.title)}>{post?.title}</Link> */}
+    <Link href={"/p/"+post?.id} prefetch={true}>{post?.title}</Link>
+    </h2>
+    <p className="mt-4 text-muted-foreground">
+      In this article, we'll explore the key considerations and best practices for building a scalable and
+      secure web application that can handle growing traffic and user demands.
+    </p>
+  </CardContent>
+  <CardFooter>
+    <div className="flex items-center gap-4">
+      <div className="flex items-center gap-1 text-sm text-muted-foreground">
+        <TagIcon className="h-4 w-4" />
+        <Link href="#" className="hover:underline" prefetch={false}>
+          web-development
+        </Link>
+        <Link href="#" className="hover:underline" prefetch={false}>
+          architecture
+        </Link>
+        <Link href="#" className="hover:underline" prefetch={false}>
+          scalability
+        </Link>
+      </div>
+      <div className="flex-1" />
+      <Link
+        href={"/p/"+post?.id}
+        className="inline-flex h-8 items-center justify-center rounded-md bg-primary px-4 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
+        prefetch={false}>
+        Read More
+      </Link>
+    </div>
+  </CardFooter>
+</Card>
+}
+
 
 function DiscIcon(props) {
   return (
