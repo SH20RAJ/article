@@ -1,6 +1,4 @@
-"use server"
-
-import { auth } from "@/auth"
+'use server'
 import prisma from "@/prisma"
 
 
