@@ -2,6 +2,7 @@ import { getArticleWithId } from '../../p/[...id]/funcs/getArticleWithId';
 import getUserSession from '@/app/(auth)/(funcs)/getUserSession';
 
 import EditMain from './main';
+import HighlightAll from '../../p/[...id]/HighLightAll';
 
 
 export default async function page({params}) {
@@ -14,7 +15,10 @@ export default async function page({params}) {
   // console.log(session.user,"dddd",article.author.id);
   if(session.userId !== article.author.id) return <div>Not an admin</div>
     return (
-      <EditMain article={article}/>
+      <>
       
+      <EditMain article={article}/>
+      <HighlightAll/>
+      </>
   )
 }

@@ -3,13 +3,20 @@ import { useEffect } from "react";
 import Prism from "prismjs";
 import "prismjs/themes/prism-okaidia.css";
 import "prismjs/components/prism-typescript";
+import "prismjs/components/prism-javascript";
+import "prismjs/components/prism-jsx";
+import "prismjs/components/prism-tsx";
+import "prismjs/components/prism-css";
+import "prismjs/components/prism-scss";
+import "prismjs/components/";
+
 import "prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js";
-import "prismjs/plugins/line-numbers/prism-line-numbers.min.js";
-import "prismjs/plugins/line-highlight/prism-line-highlight.min.js";
-import "prismjs/plugins/line-highlight/prism-line-highlight.css";
-import "prismjs/plugins/toolbar/prism-toolbar.min.js";
-import "prismjs/plugins/show-language/prism-show-language.min.js";
-import "prismjs/plugins/normalize-whitespace/prism-normalize-whitespace.min.js";
+// import "prismjs/plugins/line-numbers/prism-line-numbers.min.js";
+// import "prismjs/plugins/line-highlight/prism-line-highlight.min.js";
+// import "prismjs/plugins/line-highlight/prism-line-highlight.css";
+// import "prismjs/plugins/toolbar/prism-toolbar.min.js";
+// import "prismjs/plugins/show-language/prism-show-language.min.js";
+// import "prismjs/plugins/normalize-whitespace/prism-normalize-whitespace.min.js";
 
 
 export default function HighlightAll() {
