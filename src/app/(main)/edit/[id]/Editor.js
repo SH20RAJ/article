@@ -29,6 +29,8 @@ export default function NovelEditor({content, setContent}) {
         return "www.example.com/failed-upload.png";
       }}
       />
+      <style dangerouslySetInnerHTML={{__html: "\n        code , pre {\n          overflow-x: auto;\n        }\n      " }} />
+
     </>
    
   );

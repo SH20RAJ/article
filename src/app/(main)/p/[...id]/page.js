@@ -1,4 +1,3 @@
-import React from 'react'
 import { PostPage1 } from './PostPage1'
 import { getArticleWithId } from './funcs/getArticleWithId';
 import HighlightAll from './HighLightAll';

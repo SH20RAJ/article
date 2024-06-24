@@ -11,10 +11,8 @@ import getUserSession from "@/app/(auth)/(funcs)/getUserSession"
 import Link from "next/link"
 import { makeSlug } from "@/lib/funs"
 
-export default async function UserCard(props) {
+export default async function UserCard({user, ...props}) {
 
-  let user = await getUserSession();
-  user = user?.user;
   return (
     <Card className={"w-full  bg-background rounded-xl overflow-hidden shadow-lg"} {...props}>
       <div className="relative h-32 bg-muted">

@@ -198,13 +198,13 @@ export async function PostCard4({ post }) {
     <Link href={"/p/"+post?.id} prefetch={true}>{post?.title}</Link>
     </h2>
     <p className="mt-4 text-muted-foreground">
-      In this article, we'll explore the key considerations and best practices for building a scalable and
-      secure web application that can handle growing traffic and user demands.
+      {/* In this article, we'll explore the key considerations and best practices for building a scalable and
+      secure web application that can handle growing traffic and user demands. */}
     </p>
   </CardContent>
   <CardFooter>
     <div className="flex items-center gap-4">
-      <div className="flex items-center gap-1 text-sm text-muted-foreground">
+      <div className="sm:flex hidden items-center gap-1 text-sm text-muted-foreground">
         <TagIcon className="h-4 w-4" />
         <Link href="#" className="hover:underline" prefetch={false}>
           web-development
@@ -216,7 +216,7 @@ export async function PostCard4({ post }) {
           scalability
         </Link>
       </div>
-      <div className="flex-1" />
+      <div className="flex-1 float-right" />
       <Link
         href={"/p/"+post?.id}
         className="inline-flex h-8 items-center justify-center rounded-md bg-primary px-4 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"

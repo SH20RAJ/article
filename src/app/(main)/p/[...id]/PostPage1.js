@@ -151,18 +151,18 @@ export async function PostPage1({ id }) {
               <div>
                 <h1
                   className=" 
-                text-4xl font-bold m-4"
+                text-2xl md:text-4xl font-bold m-4"
                 >
                   {article.title}
                 </h1>
                 <hr />
               </div>
             </CardHeader>
-            <CardContent>
+            <CardContent className=" md:p-6 p-0">
                 {
                   <div
                   id="article"
-                  className="showdowncontainer"
+                  className="showdowncontainer p-0 m-0"
                   dangerouslySetInnerHTML={{
                     __html: converter.makeHtml(article.content),
                   }}
@@ -171,7 +171,7 @@ export async function PostPage1({ id }) {
             </CardContent>
             <CardFooter>
               <div className="flex items-center gap-4">
-                <div className="flex items-center gap-1 text-sm text-muted-foreground">
+                <div className="flex items-center gap-1  text-muted-foreground">
                   <TagIcon className="h-4 w-4" />
                   {article?.tags &&
                     article?.tags?.map((tag, i) => (
@@ -232,7 +232,7 @@ export async function PostPage1({ id }) {
         </div>
 
         <div className="space-y-8 md:w-[25%]">
-          <UserCard />
+          <UserCard user={article?.author} />
           <Card>
             <CardHeader>
               <CardTitle>Suggested Tags</CardTitle>
