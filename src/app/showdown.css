@@ -6,7 +6,7 @@
   --background-color: transparent;
   --blockquote-border-color: #999;
   --blockquote-background-color: #f9f9f9;
-  --code-background-color: #ccc;
+  /* --code-background-color: #ccc; */
   --table-border-color: #ccc;
   --table-header-background-color: #f2f2f2;
 
@@ -45,7 +45,7 @@
     --background-color: transparent;
     --blockquote-border-color: #555;
     --blockquote-background-color: #444;*/
-    --code-background-color: #555;
+    /* --code-background-color: #555; */
     /* --table-border-color: #555;
     --table-header-background-color: #444; */ 
   }
@@ -106,13 +106,13 @@
 
 .showdowncontainer code {
   font-family: var(--code-font-family);
-  background-color: var(--code-background-color);
+  /* background-color: var(--code-background-color); */
   padding: var(--padding-small) var(--padding-medium);
   border-radius: var(--border-radius-small);
 }
 
 .showdowncontainer pre {
-  background-color: var(--code-background-color);
+  /* background-color: var(--code-background-color); */
   padding: var(--padding-large);
   border-radius: var(--border-radius-medium);
   overflow-x: auto;
@@ -196,7 +196,7 @@
   --background-color: transparent;
   --blockquote-border-color: #999;
   --blockquote-background-color: #f9f9f9;
-  --code-background-color: #ccc;
+  /* --code-background-color: #ccc; */
   --table-border-color: #ccc;
   --table-header-background-color: #f2f2f2;
 
@@ -235,7 +235,7 @@
     --background-color: transparent;
     --blockquote-border-color: #555;
     --blockquote-background-color: #444;*/
-    --code-background-color: #555;
+    --code-background-color: transparent;
     /* --table-border-color: #555;
     --table-header-background-color: #444; */ 
   }
@@ -296,7 +296,7 @@
 
 .showdowncontainer code {
   font-family: var(--code-font-family);
-  background-color: var(--code-background-color);
+  /* background-color: var(--code-background-color); */
   padding: var(--padding-small) var(--padding-medium);
   border-radius: var(--border-radius-small);
 }

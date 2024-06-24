@@ -1,7 +1,7 @@
-import Nav from '@/app/_compo/Nav'
 import React from 'react'
 import { PostPage1 } from './PostPage1'
 import { getArticleWithId } from './funcs/getArticleWithId';
+import HighlightAll from './HighlightAll';
 
 export async function generateMetadata({ params }) {
   console.log(params);
@@ -17,12 +17,13 @@ export async function generateMetadata({ params }) {
 }
 
 export default function page({params}) {
-  console.log(params);
+  // console.log(params);
   const id = params.id
   return (
     <div className=' max-w-full'>
       <PostPage1 id={id}/>
-      
+      <HighlightAll/>
+
     </div>
   )
 }

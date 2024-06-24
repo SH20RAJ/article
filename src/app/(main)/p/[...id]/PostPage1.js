@@ -10,9 +10,6 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import Footer from "@/_compo/homepage/Footer";
-import Trending from "@/app/_compo/Trending";
-import { TagPostList } from "@/components/tag-post-list";
 import UserCard from "@/_compo/p/UserCard";
 var showdown = require("showdown");
 import "@/app/showdown.css";
@@ -26,7 +23,7 @@ import getUserSession from "@/app/(auth)/(funcs)/getUserSession";
 export async function PostPage1({ id }) {
   let article = await getArticleWithId(id);
   let converter = new showdown.Converter();
-  let session = await getUserSession()
+  let session = await getUserSession();
   // console.log(session.id,article.author.id );
 
   return (
@@ -128,24 +125,28 @@ export async function PostPage1({ id }) {
                     {getDate(article.createdAt)}
                   </div>
                 </div>
-                {session.userId == article.author.id &&<div className="flex justify-end justify-self-end align float-end">
-                  <Link href={"/edit/"+article.id}>
-                  <Button
-                    variant="ghost"
-                    size="icon"
-                    className="flex w-full ml-8 p-4"
-                  >
-                  <Edit className="h-4 w-4 m-1" /> Edit
-                  </Button></Link>
-                  <Link href={"/stats/"+article.id}>
-                  <Button
-                    variant="ghost"
-                    size="icon"
-                    className="flex w-full ml-8 p-4"
-                  >
-                    <Satellite className="h-4 w-4 m-1" /> Stats
-                  </Button></Link>
-                </div>}
+                {session?.userId == article?.author?.id && (
+                  <div className="flex justify-end justify-self-end align float-end">
+                    <Link href={"/edit/" + article.id}>
+                      <Button
+                        variant="ghost"
+                        size="icon"
+                        className="flex w-full ml-8 p-4"
+                      >
+                        <Edit className="h-4 w-4 m-1" /> Edit
+                      </Button>
+                    </Link>
+                    <Link href={"/stats/" + article.id}>
+                      <Button
+                        variant="ghost"
+                        size="icon"
+                        className="flex w-full ml-8 p-4"
+                      >
+                        <Satellite className="h-4 w-4 m-1" /> Stats
+                      </Button>
+                    </Link>
+                  </div>
+                )}
               </div>
               <div>
                 <h1
@@ -158,15 +159,15 @@ export async function PostPage1({ id }) {
               </div>
             </CardHeader>
             <CardContent>
-              {
-                <div
+                {
+                  <div
                   id="article"
                   className="showdowncontainer"
                   dangerouslySetInnerHTML={{
                     __html: converter.makeHtml(article.content),
                   }}
-                ></div>
-              }
+                  ></div>
+                }
             </CardContent>
             <CardFooter>
               <div className="flex items-center gap-4">

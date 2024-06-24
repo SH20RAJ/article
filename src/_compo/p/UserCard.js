@@ -11,12 +11,12 @@ import getUserSession from "@/app/(auth)/(funcs)/getUserSession"
 import Link from "next/link"
 import { makeSlug } from "@/lib/funs"
 
-export default async function UserCard() {
+export default async function UserCard(props) {
 
   let user = await getUserSession();
   user = user?.user;
   return (
-    <Card className="w-full  bg-background rounded-xl overflow-hidden shadow-lg">
+    <Card className={"w-full  bg-background rounded-xl overflow-hidden shadow-lg"} {...props}>
       <div className="relative h-32 bg-muted">
         <img src={user?.image || "/placeholder.svg"} alt="User background" className="object-cover w-full h-full" />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
