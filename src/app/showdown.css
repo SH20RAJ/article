@@ -40,11 +40,11 @@
   :root {
     /* Dark Theme Colors */
     /* --primary-color: #1e90ff;
-    --secondary-color: #444;
-    --text-color: #f9f9f9;
+    --secondary-color: #444;*/
+    --text-color: #f9f9f9; 
     --background-color: transparent;
     --blockquote-border-color: #555;
-    --blockquote-background-color: #444;*/
+    --blockquote-background-color: #444;
     /* --code-background-color: #555; */
     /* --table-border-color: #555;
     --table-header-background-color: #444; */ 
@@ -55,7 +55,7 @@
 .showdowncontainer {
   font-family: var(--font-family);
   margin: var(--margin-large);
-  color: var(--text-color);
+  /* color: var(--text-color); */
   background-color: var(--background-color);
   line-height: var(--line-height);
 }

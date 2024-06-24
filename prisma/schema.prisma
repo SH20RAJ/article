@@ -16,7 +16,7 @@ model User {
   bio           String?
   imageUrl      String?
   image         String?
-  emailVerified String?        
+  emailVerified String?
   posts         Post[]
   comments      Comment[]
   likes         Like[]
@@ -49,8 +49,8 @@ model Post {
   newsletter   Newsletter?    @relation(fields: [newsletterId], references: [id])
   createdAt    DateTime       @default(now())
   updatedAt    DateTime       @updatedAt
+  viewCount    Int            @default(0)
 }
-
 
 model Comment {
   id        Int      @id @default(autoincrement())
