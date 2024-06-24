@@ -9,7 +9,7 @@ import {
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import Link from "next/link";
 import getUserSession from "../(auth)/(funcs)/getUserSession";
-import { BookDashed, LogOutIcon, Moon, PencilRulerIcon, User2Icon } from "lucide-react";
+import { BookDashed, LogOutIcon, Moon, PencilRulerIcon, SwitchCamera, User2Icon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export const ProfileAvatar = async () => {
@@ -30,6 +30,7 @@ export const ProfileAvatar = async () => {
         <Link href="/profile"><DropdownMenuItem><User2Icon size={15} className="mr-2"/> Profile</DropdownMenuItem></Link>
         <Link href="/dashboard"><DropdownMenuItem><BookDashed size={15} className="mr-2"/> Dashboard</DropdownMenuItem></Link>
         <Link href="/create"><DropdownMenuItem><PencilRulerIcon size={15} className="mr-2"/> Create</DropdownMenuItem></Link>
+        <Link href="/join"><DropdownMenuItem><SwitchCamera size={15} className="mr-2"/> Switch Account</DropdownMenuItem></Link>
         <DropdownMenuItem><LogOutIcon className=" w-4 h-4 mr-2" /> 
         <Link href="/logout">
           Logout

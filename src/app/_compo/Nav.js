@@ -74,11 +74,11 @@ const LoggedIn = () => {
 const LoggedOut = () => {
   return (
     <>
-      <Link href="/login">
+      {/* <Link href="/login">
         <h3 className="cursor-pointer">Login</h3>
-      </Link>
+      </Link> */}
       <Link href="/join">
-        <h3 className="cursor-pointer">Register</h3>
+        <h3 className="cursor-pointer">Join</h3>
       </Link>
       <ModeToggle />
 
