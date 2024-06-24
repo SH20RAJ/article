@@ -12,7 +12,7 @@ import "prismjs/plugins/show-language/prism-show-language.min.js";
 import "prismjs/plugins/normalize-whitespace/prism-normalize-whitespace.min.js";
 
 
-export default function PrismLoader() {
+export default function HighlightAll() {
   useEffect(() => {
     Prism.highlightAll();
     
