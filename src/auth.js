@@ -45,8 +45,8 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
           image: profile.picture,
         },
         update: {
-          name: profile.name,
-          image: profile.picture,
+          // name: profile.name,
+          // image: profile.picture,
         },
       });
       // console.log("session",session);

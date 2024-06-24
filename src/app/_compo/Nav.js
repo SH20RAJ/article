@@ -80,6 +80,8 @@ const LoggedOut = () => {
       <Link href="/join">
         <h3 className="cursor-pointer">Register</h3>
       </Link>
+      <ModeToggle />
+
     </>
   );
 };
