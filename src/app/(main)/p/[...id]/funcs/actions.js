@@ -103,3 +103,39 @@ export const getLatestPosts = async (limit) => {
     });
     return posts;
 }
+
+
+
+export const updateViews = async (id) => {
+    try {
+      const updatedPost = await prisma.post.update({
+        where: { id },
+        data: {
+          viewCount: viewCount +1, // Update viewCount to 4
+        },
+      });
+  
+      console.log('Updated post:', updatedPost);
+    } catch (error) {
+      console.error('Error updating post:', error);
+    } finally {
+      await prisma.$disconnect();
+    }
+  };
+  
+
+export async function saveView(userId, postId) {
+    try {
+      const view = await prisma.view.create({
+        data: {
+          userId : parseInt(userId),
+          postId : parseInt(postId),
+        },
+      });
+      console.log('View saved:', view);
+      return view;
+    } catch (error) {
+      console.error('Error saving view:', error);
+      throw error;
+    }
+  }
