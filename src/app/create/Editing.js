@@ -16,7 +16,7 @@ export default function Editing() {
   const [publishing, setPublishing] = useState(false);
 
   useEffect(() => {
-    console.log(data);
+    // console.log(data);
   }, [data]);
 
   const handlePublish = () => {
@@ -40,7 +40,7 @@ export default function Editing() {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         setPublishing(false);
         toast({
             title: "Post published",

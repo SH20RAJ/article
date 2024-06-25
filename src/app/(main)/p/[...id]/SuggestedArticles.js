@@ -17,7 +17,7 @@ export default function SuggestedArticles() {
   useEffect(() => {
     getRandomPosts(5).then((posts) => {
       setPosts(posts);
-      console.log(posts);
+      // console.log(posts);
     });
   }, []);
 

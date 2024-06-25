@@ -19,7 +19,7 @@ export const updateViews = async (id) => {
         },
       });
   
-      console.log('Updated post:', updatedPost);
+      // console.log('Updated post:', updatedPost);
     } catch (error) {
       console.error('Error updating post:', error);
     } finally {
