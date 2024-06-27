@@ -13,10 +13,10 @@ import useSWR from "swr";
 
 
 export default function SuggestedArticles() {
-  const { data : posts, error } = useSWR('/api/random-posts', ()=> getRandomPosts(5));
+  const { data : posts, error } = useSWR('/api/random-posts', ()=> getRandomPosts(5),{revalidateIfStale:false,revalidateOnFocus: false,});
 
   if (error) return 'Failed to load';
-  if (!posts) return 'Loading...';
+  if (!posts) return ;
 
   return (
     <Card>

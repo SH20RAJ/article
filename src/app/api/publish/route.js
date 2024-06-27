@@ -15,7 +15,9 @@ export async function POST(request) {
     }
 
     // Parse the request body
-    const { title, content, published, communityId } = await request.json();
+    let { title, content, published, communityId } = await request.json();
+    title = title.substring(0,200)
+    content = content.substring(0,20000)
 
     // Create a new post using Prisma
     const post = await prisma.post.create({

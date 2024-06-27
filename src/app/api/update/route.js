@@ -9,7 +9,10 @@ export async function POST(request) {
     const user = await getUserFromEmail(userSession?.user?.email);
     // console.log(userSession, user);
         // Parse the request body
-        const { title, content, published, articleId } = await request.json();
+        let { title, content, published, articleId } = await request.json();
+        title = title.substring(0,200)
+        content = content.substring(0,20000)
+    
 
 
     let article = await prisma.post.findUnique({

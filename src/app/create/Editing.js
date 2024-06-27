@@ -75,6 +75,7 @@ export default function Editing() {
             placeholder="Title"
             className="ml-8 border-0 outline-0 outline-none mb-4 p-4 px-2 text-4xl w-full font-bold"
             onChange={(e) => setTitle(e.target.value)}
+            max={200}
           />
   
           <hr />

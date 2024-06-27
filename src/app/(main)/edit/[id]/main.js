@@ -41,7 +41,7 @@ export default function EditMain({ article }) {
           type: "success",
         });
         setTimeout(() => {
-        //   location.href = `/p/${data.id}`;
+          location.href = `/p/${data.id}`;
           redirect("/post/" + data.id);
         }, 2000);
       })

@@ -131,20 +131,12 @@ export async function PostPage1({ id }) {
                       <Button
                         variant="ghost"
                         size="icon"
-                        className="flex w-full ml-8 p-4"
+                        className="flex w-full ml-0 p-4"
                       >
                         <Edit className="h-4 w-4 m-1" /> Edit
                       </Button>
                     </Link>
-                    <Link href={"/stats/" + article.id}>
-                      <Button
-                        variant="ghost"
-                        size="icon"
-                        className="flex w-full ml-8 p-4"
-                      >
-                        <Satellite className="h-4 w-4 m-1" /> Stats
-                      </Button>
-                    </Link>
+            
                   </div>
                 )}
               </div>
