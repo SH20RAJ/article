@@ -10,7 +10,7 @@ export default async function Page({params}) {
 
   return (
     <div>
-      <Profile1 user={user} post={postsByUsername}/>
+      <Profile1 user={user} posts={postsByUsername}/>
       {/* {postsByUsername.map((post) => (
         <PostCard4 key={post.id} post={post} />
       ))} */}

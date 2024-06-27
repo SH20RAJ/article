@@ -23,11 +23,10 @@ export function Profile1({user, posts}) {
       <main className="container mx-auto px-4 md:px-6 py-12">
         <div className="flex flex-col items-center space-y-2">
           <h1 className="text-3xl font-bold">{user.name}</h1>
-          <p className="text-muted-foreground">{user.bio || "Software Engineer | Vercel"}</p>
+          <p className="text-muted-foreground">{user.bio || "Software Engineer | Self Employed"}</p>
           <p className="max-w-md text-center text-muted-foreground">
-            {user?.bio || ""} {
-                JSON.stringify(user)
-            }
+            {user?.bio || ""} 
+            <p>@{user.username}</p>
           </p>
           <div className="flex items-center gap-2">
             <Button variant="outline">Follow</Button>
