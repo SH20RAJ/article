@@ -216,7 +216,7 @@ export const getUserDetails = async ({ username, id, email }) => {
         email: true,
         username: true,
         bio: true,
-        imageUrl: true,
+        image: true,
         createdAt: true,
         updatedAt: true,
         // posts: {
@@ -276,7 +276,7 @@ export const getUserDetails2 = async ({ username }) => {
         email: true,
         username: true,
         bio: true,
-        imageUrl: true,
+        image: true,
         createdAt: true,
         updatedAt: true,
         // posts: {

@@ -37,10 +37,10 @@ export default function SuggestedArticles() {
 export const PostCard2 = ({ post }) => {
   return (
     <div className="flex items-start gap-4">
-      <Avatar className="w-10 h-10 border">
+      {/* <Avatar className="w-10 h-10 border">
         <AvatarImage src={post.author.image || "/placeholder-user.jpg"} />
         <AvatarFallback>AC</AvatarFallback>
-      </Avatar>
+      </Avatar> */}
       <div>
         <div className="font-medium">
           <Link href={"/p/" + post.id + "/" + makeSlug(post.title)}>{post?.title}</Link>
