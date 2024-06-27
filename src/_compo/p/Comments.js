@@ -1,7 +1,10 @@
-'use client'
+'use client';
+
 import { useEffect, useRef } from 'react';
+import { useTheme } from 'next-themes';
 
 const Comments = ({ issueTerm }) => {
+  const { theme } = useTheme();
   const commentsSection = useRef(null);
 
   useEffect(() => {
@@ -11,9 +14,9 @@ const Comments = ({ issueTerm }) => {
     script.crossOrigin = 'anonymous';
     script.setAttribute('repo', 'shade-cool/article');
     script.setAttribute('issue-term', issueTerm);
-    script.setAttribute('theme', 'github-light');
+    script.setAttribute('theme', theme === 'dark' ? 'github-dark' : 'github-light');
     commentsSection.current.appendChild(script);
-  }, [issueTerm]);
+  }, [issueTerm, theme]);
 
   return <div ref={commentsSection} />;
 };
