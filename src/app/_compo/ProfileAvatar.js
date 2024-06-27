@@ -11,6 +11,7 @@ import Link from "next/link";
 import getUserSession from "../(auth)/(funcs)/getUserSession";
 import { BookDashed, LogOutIcon, Moon, PencilRulerIcon, SwitchCamera, User2Icon } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { convertToCloudinaryUrl } from "@/lib/funs";
 
 export const ProfileAvatar = async () => {
     let user = await getUserSession();
@@ -18,7 +19,7 @@ export const ProfileAvatar = async () => {
     <DropdownMenu>
       <DropdownMenuTrigger>
         <Avatar className=" border border-amber-50">
-          <AvatarImage src={user?.user?.image || "https://github.com/sh20raj.png"} />
+          <AvatarImage src={convertToCloudinaryUrl(user?.user?.image) || "https://github.com/sh20raj.png"} />
           <AvatarFallback>{(user.user.name).substring(0,2)||"UI"}</AvatarFallback>
         </Avatar>
       </DropdownMenuTrigger>

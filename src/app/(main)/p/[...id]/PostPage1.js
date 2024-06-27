@@ -15,7 +15,7 @@ var showdown = require("showdown");
 import "@/app/showdown.css";
 import SuggestedArticles from "./SuggestedArticles";
 
-import { getRelativeTime, getDate } from "@/lib/funs";
+import { getRelativeTime, getDate, convertToCloudinaryUrl } from "@/lib/funs";
 import SuggestedArticles2 from "./SuggestedArticles2";
 import { Edit, Satellite } from "lucide-react";
 import getUserSession from "@/app/(auth)/(funcs)/getUserSession";
@@ -114,7 +114,7 @@ export async function PostPage1({ id }) {
               <div className="flex items-center gap-4">
                 <Avatar className="w-10 h-10 border">
                   <AvatarImage
-                    src={article.author.image || "/placeholder-user.jpg"}
+                    src={convertToCloudinaryUrl(article.author.image) || "/placeholder-user.jpg"}
                   />
                   <AvatarFallback>AC</AvatarFallback>
                 </Avatar>
@@ -194,6 +194,7 @@ export async function PostPage1({ id }) {
                 >
                   Read More
                 </Link>
+<a href={"https://visitorbadge.io/status?path=https%3A%2F%2Farticle.shade.cool%2Fp%2F"+article?.id}><img src={"https://api.visitorbadge.io/api/visitors?path=https%3A%2F%2Farticle.shade.cool%2Fp%2F"+article.id+"&countColor=%23263759"} /></a>
               </div>
             </CardFooter>
           </Card>
