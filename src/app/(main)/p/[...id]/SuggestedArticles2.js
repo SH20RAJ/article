@@ -10,18 +10,14 @@ import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { getPosts, getRandomPosts } from "./funcs/actions";
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import useSWR from "swr";
 
 
 export default function SuggestedArticles2() {
 
-    const [posts, setPosts] = useState([]);
-    useEffect(() => {
-      getRandomPosts(5).then((posts) => {
-        setPosts(posts);
-        // console.log(posts);
-      });
-    }, []);
-
+   const { data : posts, error } = useSWR("",()=>getRandomPosts(5))
+   if(!posts) return 
+   
     
   return (
     <>

@@ -3,39 +3,34 @@ import {
   Card,
   CardHeader,
   CardContent,
-  CardFooter,
   CardTitle,
 } from "@/components/ui/card";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
-import { getPosts, getRandomPosts } from "./funcs/actions";
-import { useEffect, useState } from "react";
+import { getRandomPosts } from "./funcs/actions";
 import Link from "next/link";
 import { makeSlug } from "@/lib/funs";
+import useSWR from "swr";
+
 
 export default function SuggestedArticles() {
-  const [posts, setPosts] = useState([]);
-  useEffect(() => {
-    getRandomPosts(5).then((posts) => {
-      setPosts(posts);
-      // console.log(posts);
-    });
-  }, []);
+  const { data : posts, error } = useSWR('/api/random-posts', ()=> getRandomPosts(5));
+
+  if (error) return 'Failed to load';
+  if (!posts) return 'Loading...';
 
   return (
-    <>
-      <Card>
-        <CardHeader>
-          <CardTitle>Suggested Articles</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <div className="grid gap-4">
-            {posts.map((post) => {
-              return <PostCard2 post={post} key={post.id} />;
-            })}
-          </div>
-        </CardContent>
-      </Card>
-    </>
+    <Card>
+      <CardHeader>
+        <CardTitle>Suggested Articles</CardTitle>
+      </CardHeader>
+      <CardContent>
+        <div className="grid gap-4">
+          {posts.map((post) => (
+            <PostCard2 post={post} key={post.id} />
+          ))}
+        </div>
+      </CardContent>
+    </Card>
   );
 }
 
@@ -48,7 +43,7 @@ export const PostCard2 = ({ post }) => {
       </Avatar>
       <div>
         <div className="font-medium">
-          <Link href={"/p/"+post.id+"/"+makeSlug(post.title)}>{post?.title}</Link>
+          <Link href={"/p/" + post.id + "/" + makeSlug(post.title)}>{post?.title}</Link>
         </div>
         <div className="text-sm text-muted-foreground">by {post.author.name}</div>
       </div>
