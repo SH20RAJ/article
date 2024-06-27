@@ -25,12 +25,12 @@ To read more about using these font, please visit the Next.js documentation:
 **/
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar"
 import { Card, CardHeader, CardContent, CardFooter, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import MainSidebar from "./MainSidebar"
 import { getLatestPosts, getRandomPosts } from "@/app/(main)/p/[...id]/funcs/actions"
 import { getDate } from "@/lib/funs"
+import { PostCard4 } from "../postcards/PostCard4"
 
 export async function Feeds2() {
   let posts = await getLatestPosts()
@@ -39,7 +39,6 @@ export async function Feeds2() {
       <main
         className="flex-1 container mx-auto grid grid-cols-1 md:grid-cols-[1fr_300px] gap-8 px-4 md:px-6 py-8">
         <div className="space-y-8">
-          <PostCard4/>
           {
             posts.map((post,i) => (
               <PostCard4 key={post.id} post={post} />
@@ -177,56 +176,7 @@ export async function Feeds2() {
 }
 
 
-export async function PostCard4({ post }) {
-  if(!post) return 
-  return <Card>
-  <CardHeader>
-    <div className="flex items-center gap-4">
-      <Avatar className="w-10 h-10 border">
-        <AvatarImage src="/placeholder-user.jpg" />
-        <AvatarFallback>AC</AvatarFallback>
-      </Avatar>
-      <div>
-        <div className="font-medium">{post?.author?.name}</div>
-        <div className="text-sm text-muted-foreground">Published on {getDate(post?.createdAt)}</div>
-      </div>
-    </div>
-  </CardHeader>
-  <CardContent>
-    <h2 className="text-2xl font-bold">
-    {/* <Link href={"/p/"+post.id+"/"+makeSlug(post.title)}>{post?.title}</Link> */}
-    <Link href={"/p/"+post?.id} prefetch={true}>{post?.title}</Link>
-    </h2>
-    <p className="mt-4 text-muted-foreground">
-      {/* In this article, we'll explore the key considerations and best practices for building a scalable and
-      secure web application that can handle growing traffic and user demands. */}
-    </p>
-  </CardContent>
-  <CardFooter>
-    <div className="flex items-center gap-4">
-      <div className="sm:flex hidden items-center gap-1 text-sm text-muted-foreground">
-        <TagIcon className="h-4 w-4" />
-        <Link href="#" className="hover:underline" prefetch={false}>
-          web-development
-        </Link>
-        <Link href="#" className="hover:underline" prefetch={false}>
-          architecture
-        </Link>
-        <Link href="#" className="hover:underline" prefetch={false}>
-          scalability
-        </Link>
-      </div>
-      <div className="flex-1 float-right" />
-      <Link
-        href={"/p/"+post?.id}
-        className="inline-flex h-8 items-center justify-center rounded-md bg-primary px-4 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
-        prefetch={false}>
-        Read More
-      </Link>
-    </div>
-  </CardFooter>
-</Card>
-}
+
 
 
 function DiscIcon(props) {

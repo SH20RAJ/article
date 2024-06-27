@@ -119,7 +119,7 @@ export async function PostPage1({ id }) {
                   <AvatarFallback>AC</AvatarFallback>
                 </Avatar>
                 <div>
-                  <div className="font-medium">{article.author.name}</div>
+                  <Link href={"/u/"+article.author.username}><div className="font-medium">{article.author.name}</div></Link>
                   <div className="text-sm text-muted-foreground">
                     Published {getRelativeTime(article.createdAt)} on{" "}
                     {getDate(article.createdAt)}
