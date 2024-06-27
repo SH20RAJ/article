@@ -19,6 +19,7 @@ import { getRelativeTime, getDate, convertToCloudinaryUrl } from "@/lib/funs";
 import SuggestedArticles2 from "./SuggestedArticles2";
 import { Edit, Satellite } from "lucide-react";
 import getUserSession from "@/app/(auth)/(funcs)/getUserSession";
+import Comments from "@/_compo/p/Comments";
 
 export async function PostPage1({ id }) {
   let article = await getArticleWithId(id);
@@ -222,6 +223,7 @@ export async function PostPage1({ id }) {
             </CardContent>
           </Card>
           <SuggestedArticles2 />
+          <Comments issueTerm={article.id}/>
         </div>
 
         <div className="space-y-8 md:w-[25%]">
