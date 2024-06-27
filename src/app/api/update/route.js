@@ -50,6 +50,7 @@ export async function POST(request) {
 
     // Return the created post as the response
     return NextResponse.json(post);
+    
   } catch (error) {
     console.error("Error creating post:", error);
     return NextResponse.json({ error: "Error creating post" }, { status: 500 });
