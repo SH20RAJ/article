@@ -59,7 +59,7 @@ export const getRandomPosts = async (limit = 5) => {
       },
     });
 
-    const maxLimit = Math.min(limit, 5);
+    const maxLimit = Math.min(limit, 20000);
     const skip = totalPosts > maxLimit ? Math.floor(Math.random() * (totalPosts - maxLimit)) : 0;
 
     const posts = await prisma.post.findMany({
