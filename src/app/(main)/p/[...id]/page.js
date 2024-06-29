@@ -12,7 +12,7 @@ export async function generateMetadata({ params }) {
   return {
     title: article.title,
     description: article.description,
-    keywords: [...article.tags],
+    keywords: [article.title, article.description, article.tags],
     openGraph: {
       title: article.title,
       description: article.description,
