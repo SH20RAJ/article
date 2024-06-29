@@ -12,10 +12,28 @@ export async function generateMetadata({ params }) {
   return {
     title: article.title,
     description: article.description,
-    image: article.image,
-    url: `https://article.shade.cool/p/${article.id}`
+    keywords: [...article.tags],
+    openGraph: {
+      title: article.title,
+      description: article.description,
+      images: [
+        {
+          url: article.image || `https://cdn.statically.io/og/${article.title}.jpg`,
+          alt: article.title,
+        }
+      ],
+      url: `https://article.shade.cool/p/${article.id}`
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: article.title,
+      description: article.description,
+      image: article.image || `https://cdn.statically.io/og/${article.title}.jpg`,
+      url: `https://article.shade.cool/p/${article.id}`
+    }
   }
 }
+
 
 export default async function page({params}) {
   // console.log(params);
