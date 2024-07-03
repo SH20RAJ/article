@@ -1,29 +1,14 @@
 
-import Link from "next/link"
-import { Button } from "@/components/ui/button"
 import { Card, CardHeader, CardContent, CardFooter, CardTitle } from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import MainSidebar from "./MainSidebar"
-import { getLatestPosts, getRandomPosts } from "@/app/(main)/p/[...id]/funcs/actions"
-import { getDate } from "@/lib/funs"
-import { PostCard4 } from "../postcards/PostCard4"
+import Link from 'next/link'
+import MainSidebar from './MainSidebar';
+import { Input } from '@/components/ui/input';
+import { Button } from '@/components/ui/button';
 
-export async function Feeds2() {
-  let posts = await getLatestPosts({ limit: 10 })
+export default function Tags() {
   return (
-    (<div className="flex flex-col min-h-screen">
-      <main
-        className="flex-1 container mx-auto grid grid-cols-1 md:grid-cols-[1fr_300px] gap-8 px-4 md:px-6 py-8">
-        <div className="space-y-8">
-          {
-            posts.map((post,i) => (
-              <PostCard4 key={post.id} post={post} />
-            ))
-
-          }
-          
-        </div>
-        <div className="space-y-8">
+    <>
+      <div className="space-y-8">
           <Card>
             <CardHeader>
               <CardTitle>Categories</CardTitle>
@@ -145,93 +130,89 @@ export async function Feeds2() {
           <MainSidebar/>
 
         </div>
-      </main>
-      
-    </div>)
-  );
+    </>
+  )
 }
-
-
-
 
 
 function DiscIcon(props) {
-  return (
-    (<svg
-      {...props}
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round">
-      <circle cx="12" cy="12" r="10" />
-      <circle cx="12" cy="12" r="2" />
-    </svg>)
-  );
-}
-
-
-function MenuIcon(props) {
-  return (
-    (<svg
-      {...props}
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round">
-      <line x1="4" x2="20" y1="12" y2="12" />
-      <line x1="4" x2="20" y1="6" y2="6" />
-      <line x1="4" x2="20" y1="18" y2="18" />
-    </svg>)
-  );
-}
-
-
-function SearchIcon(props) {
-  return (
-    (<svg
-      {...props}
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round">
-      <circle cx="11" cy="11" r="8" />
-      <path d="m21 21-4.3-4.3" />
-    </svg>)
-  );
-}
-
-
-function TagIcon(props) {
-  return (
-    (<svg
-      {...props}
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round">
-      <path
-        d="M12.586 2.586A2 2 0 0 0 11.172 2H4a2 2 0 0 0-2 2v7.172a2 2 0 0 0 .586 1.414l8.704 8.704a2.426 2.426 0 0 0 3.42 0l6.58-6.58a2.426 2.426 0 0 0 0-3.42z" />
-      <circle cx="7.5" cy="7.5" r=".5" fill="currentColor" />
-    </svg>)
-  );
-}
+    return (
+      (<svg
+        {...props}
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round">
+        <circle cx="12" cy="12" r="10" />
+        <circle cx="12" cy="12" r="2" />
+      </svg>)
+    );
+  }
+  
+  
+  function MenuIcon(props) {
+    return (
+      (<svg
+        {...props}
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round">
+        <line x1="4" x2="20" y1="12" y2="12" />
+        <line x1="4" x2="20" y1="6" y2="6" />
+        <line x1="4" x2="20" y1="18" y2="18" />
+      </svg>)
+    );
+  }
+  
+  
+  function SearchIcon(props) {
+    return (
+      (<svg
+        {...props}
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round">
+        <circle cx="11" cy="11" r="8" />
+        <path d="m21 21-4.3-4.3" />
+      </svg>)
+    );
+  }
+  
+  
+  function TagIcon(props) {
+    return (
+      (<svg
+        {...props}
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round">
+        <path
+          d="M12.586 2.586A2 2 0 0 0 11.172 2H4a2 2 0 0 0-2 2v7.172a2 2 0 0 0 .586 1.414l8.704 8.704a2.426 2.426 0 0 0 3.42 0l6.58-6.58a2.426 2.426 0 0 0 0-3.42z" />
+        <circle cx="7.5" cy="7.5" r=".5" fill="currentColor" />
+      </svg>)
+    );
+  }
+  

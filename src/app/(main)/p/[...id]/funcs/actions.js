@@ -1,13 +1,20 @@
-'use server'
+"use server";
 import prisma from "@/prisma";
-import { userAgent } from "next/server";
-
+// import { userAgent } from "next/server";
 
 export const getPost = async (id) => {
   try {
     const post = await prisma.post.findUnique({
       where: {
         id: parseInt(id),
+      },
+      include: {
+        tags: {
+          include: {
+            tag: true,
+          },
+        },
+        author: true,
       },
     });
     return post;
@@ -25,6 +32,9 @@ export const getPosts = async (limit = 5) => {
       orderBy: {
         createdAt: "desc",
       },
+      where: {
+        published: true,
+      },
       select: {
         title: true,
         id: true,
@@ -36,9 +46,11 @@ export const getPosts = async (limit = 5) => {
             id: true,
           },
         },
-      },
-      where: {
-        published: true,
+        tags: {
+          include: {
+            tag: true,
+          },
+        },
       },
       take: limit,
     });
@@ -51,6 +63,34 @@ export const getPosts = async (limit = 5) => {
   }
 };
 
+
+export const getLatestPosts = async ({ limit = 10, cursor = null }) => {
+  try {
+    const posts = await prisma.post.findMany({
+      orderBy: {
+        createdAt: "desc",
+      },
+      select: {
+        title: true,
+        id: true,
+        createdAt: true,
+      },
+      where: {
+        published: true,
+      },
+      take: limit,
+      ...(cursor ? { skip: 1, cursor: { id: cursor } } : {}),
+    });
+    return posts;
+  } catch (error) {
+    console.error("Error fetching latest posts:", error);
+    throw error;
+  } finally {
+    await prisma.$disconnect();
+  }
+};
+
+
 export const getRandomPosts = async (limit = 5) => {
   try {
     const totalPosts = await prisma.post.count({
@@ -60,7 +100,10 @@ export const getRandomPosts = async (limit = 5) => {
     });
 
     const maxLimit = Math.min(limit, 20000);
-    const skip = totalPosts > maxLimit ? Math.floor(Math.random() * (totalPosts - maxLimit)) : 0;
+    const skip =
+      totalPosts > maxLimit
+        ? Math.floor(Math.random() * (totalPosts - maxLimit))
+        : 0;
 
     const posts = await prisma.post.findMany({
       orderBy: {
@@ -127,31 +170,6 @@ export const getPostsByUser = async ({ userId, username }) => {
   }
 };
 
-export const getLatestPosts = async (limit = 10) => {
-  try {
-    const posts = await prisma.post.findMany({
-      orderBy: {
-        createdAt: "desc",
-      },
-      select: {
-        title: true,
-        id: true,
-        createdAt: true,
-      },
-      where: {
-        published: true,
-      },
-      take: limit,
-    });
-    return posts;
-  } catch (error) {
-    console.error("Error fetching latest posts:", error);
-    throw error;
-  } finally {
-    await prisma.$disconnect();
-  }
-};
-
 export const updateViews = async (id) => {
   try {
     const post = await prisma.post.findUnique({
@@ -195,7 +213,6 @@ export const saveView = async (userId, postId) => {
   }
 };
 
-
 export const getUserDetails = async ({ username, id, email }) => {
   try {
     // Constructing the where clause dynamically
@@ -238,10 +255,6 @@ export const getUserDetails = async ({ username, id, email }) => {
   }
 };
 
-
-
-
-
 export const getPostsByUserName = async ({ username }) => {
   try {
     const posts = await prisma.post.findMany({
@@ -253,15 +266,13 @@ export const getPostsByUserName = async ({ username }) => {
         title: true,
         createdAt: true,
         username: true,
-      }
+      },
     });
   } catch (error) {
     console.error("Error fetching posts by username:", error);
     throw error;
   }
-
-}
-
+};
 
 export const getUserDetails2 = async ({ username }) => {
   //get user details by username
@@ -293,5 +304,4 @@ export const getUserDetails2 = async ({ username }) => {
     console.error("Error fetching user details:", error);
     throw error;
   }
-}
-
+};

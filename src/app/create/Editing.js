@@ -47,10 +47,10 @@ export default function Editing() {
             message: "Your post has been published successfully",
             type: "success",
         })
-        setTimeout(() => {
+        // setTimeout(() => {
             location.href = `/p/${data.id}`
             redirect('/post/' + data.id)
-        }, 2000);
+        // }, 2000);
       })
       .catch((error) => {
         console.error("Error publishing post:", error);

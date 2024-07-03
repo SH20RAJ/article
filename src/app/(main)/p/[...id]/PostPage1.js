@@ -170,11 +170,11 @@ export async function PostPage1({ id }) {
                     article?.tags?.map((tag, i) => (
                       <Link
                         key={i}
-                        href="#"
+                        href={"/t/"+tag.tag.id || "#"}
                         className="hover:underline"
                         prefetch={false}
                       >
-                        {tag}
+                        {tag.tag.name}
                       </Link>
                     ))}
                   {/* <Link href="#" className="hover:underline" prefetch={false}>
@@ -200,6 +200,9 @@ export async function PostPage1({ id }) {
             </CardFooter>
           </Card>
           <SuggestedArticles />
+          {
+            // JSON.stringify(article)
+          }
           <Card>
             <CardHeader>
               <CardTitle>Email Newsletter</CardTitle>
