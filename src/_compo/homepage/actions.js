@@ -1,5 +1,6 @@
-import prisma from "@/prisma";
+"use server";
 
+import prisma from "@/prisma";
 
 export const getLatestPosts = async ({ limit = 10, skip = 0 }) => {
   try {
@@ -26,15 +27,3 @@ export const getLatestPosts = async ({ limit = 10, skip = 0 }) => {
     await prisma.$disconnect();
   }
 };
-
-
-
-export const GET = async (req) => {
-  //get quries params
-  const url = new URL(req.url)
-
-  const limit = url.searchParams.get('limit') || 10
-  const skip = url.searchParams.get('skip') || 0
-
-  return Response.json(await getLatestPosts({limit, skip }));
-}
