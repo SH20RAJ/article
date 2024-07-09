@@ -6,6 +6,8 @@
 ![GitHub forks](https://img.shields.io/github/forks/SH20RAJ/article?style=social)
 ![GitHub issues](https://img.shields.io/github/issues/SH20RAJ/article)
 ![GitHub license](https://img.shields.io/github/license/SH20RAJ/article)
+[![Visitors](https://api.visitorbadge.io/api/visitors?path=https%3A%2F%2Fgithub.com%2FSH20RAJ%2Farticle&labelColor=%23d9e3f0&countColor=%23697689&style=plastic)](https://visitorbadge.io/status?path=https%3A%2F%2Fgithub.com%2FSH20RAJ%2Farticle)
+
 
 **Free Open Source Blogging Platform: article.shade.cool**
 
