@@ -226,7 +226,16 @@ export async function PostPage1({ id }) {
             </CardContent>
           </Card>
           <SuggestedArticles2 />
+          <Card>
+            <CardHeader>
+              <CardTitle>Comments</CardTitle>
+            </CardHeader>
+            <CardContent>
+              
           <Comments issueTerm={article.id}/>
+            </CardContent>
+          </Card>
+
         </div>
         <div className="space-y-8 md:mx-5">
           <UserCard user={article?.author} />

@@ -47,7 +47,7 @@ export function Feeds2() {
   }, [isLoadingMore, isReachingEnd, setSize]);
 
   if (error) return <div>Failed to load posts. Please try again later.</div>;
-  if (isLoadingInitialData) return <div>Loading...</div>;
+  if (isLoadingInitialData) return <div><Loading/></div>;
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -57,11 +57,22 @@ export function Feeds2() {
             <PostCard4 key={post.id} post={post} />
           ))}
           <div ref={loadMoreRef} className="text-center py-4">
-            {isLoadingMore ? 'Loading more posts...' : isReachingEnd ? 'No more posts to load.' : ''}
+            {isLoadingMore ? <Loading/> : isReachingEnd ? 'No more posts to load.' : ''}
           </div>
         </div>
         <Sidebar />
       </main>
+    </div>
+  );
+}
+
+
+
+
+export function Loading() {
+  return (
+    <div className="flex items-center justify-center h-[100vh]">
+      <div className="w-10 h-10 border-t-2 border-b-2 border-primary rounded-full animate-spin"></div>
     </div>
   );
 }

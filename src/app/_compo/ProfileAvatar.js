@@ -28,8 +28,8 @@ export const ProfileAvatar = async () => {
         <hr />
         <p className=" text-xs pl-2 font-bold my-2 ">✨ {user.user.name}</p>
         <DropdownMenuSeparator />
-        <Link href="/profile"><DropdownMenuItem><User2Icon size={15} className="mr-2"/> Profile</DropdownMenuItem></Link>
-        <Link href="/dashboard"><DropdownMenuItem><BookDashed size={15} className="mr-2"/> Dashboard</DropdownMenuItem></Link>
+        {/* <Link href="/profile"><DropdownMenuItem><User2Icon size={15} className="mr-2"/> Profile</DropdownMenuItem></Link> */}
+        {/* <Link href="/dashboard"><DropdownMenuItem><BookDashed size={15} className="mr-2"/> Dashboard</DropdownMenuItem></Link> */}
         <Link href="/create"><DropdownMenuItem><PencilRulerIcon size={15} className="mr-2"/> Create</DropdownMenuItem></Link>
         <Link href="/join"><DropdownMenuItem><SwitchCamera size={15} className="mr-2"/> Switch Account</DropdownMenuItem></Link>
         <DropdownMenuItem><LogOutIcon className=" w-4 h-4 mr-2" /> 

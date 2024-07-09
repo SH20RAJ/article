@@ -8,7 +8,6 @@ export default function page({params}) {
     const tag = params.id;
   return (
     <div>
-      <Nav/>
       <TagPostList/>
       {
         tag
