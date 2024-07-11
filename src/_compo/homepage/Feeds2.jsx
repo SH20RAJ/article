@@ -1,11 +1,11 @@
-"use client"
+"use client";
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef } from "react";
 import { PostCard4 } from "../postcards/PostCard4";
-import useSWRInfinite from 'swr/infinite';
+import useSWRInfinite from "swr/infinite";
 import Sidebar from "./SideBar";
 
-const fetcher = url => fetch(url).then(r => r.json());
+const fetcher = (url) => fetch(url).then((r) => r.json());
 
 export function Feeds2() {
   const getKey = (pageIndex, previousPageData) => {
@@ -17,7 +17,9 @@ export function Feeds2() {
 
   const posts = data ? [].concat(...data) : [];
   const isLoadingInitialData = !data && !error;
-  const isLoadingMore = isLoadingInitialData || (size > 0 && data && typeof data[size - 1] === "undefined");
+  const isLoadingMore =
+    isLoadingInitialData ||
+    (size > 0 && data && typeof data[size - 1] === "undefined");
   const isEmpty = data?.[0]?.length === 0;
   const isReachingEnd = isEmpty || (data && data[data.length - 1]?.length < 10);
 
@@ -31,7 +33,7 @@ export function Feeds2() {
         }
       },
       {
-        rootMargin: '200px',
+        rootMargin: "200px",
       }
     );
 
@@ -47,27 +49,30 @@ export function Feeds2() {
   }, [isLoadingMore, isReachingEnd, setSize]);
 
   if (error) return <div>Failed to load posts. Please try again later.</div>;
-  if (isLoadingInitialData) return <div><Loading/></div>;
+  if (isLoadingInitialData)
+    return (
+      <div>
+        <PostCard4Loader />
+      </div>
+    );
 
   return (
-    <div className="flex flex-col min-h-screen">
-      <main className="flex-1 container mx-auto grid grid-cols-1 md:grid-cols-[1fr_300px] gap-8 px-4 md:px-6 py-8">
-        <div className="space-y-8">
-          {posts.map(post => (
-            <PostCard4 key={post.id} post={post} />
-          ))}
-          <div ref={loadMoreRef} className="text-center py-4">
-            {isLoadingMore ? <Loading/> : isReachingEnd ? 'No more posts to load.' : ''}
-          </div>
+    <>
+      <div className="space-y-8">
+        {posts && posts.map((post) => <PostCard4 key={post.id} post={post} />)}
+        <div ref={loadMoreRef} className="text-center py-4">
+          {isLoadingMore ? (
+            <PostCard4Loader />
+          ) : isReachingEnd ? (
+            "No more posts to load."
+          ) : (
+            ""
+          )}
         </div>
-        <Sidebar />
-      </main>
-    </div>
+      </div>
+    </>
   );
 }
-
-
-
 
 export function Loading() {
   return (
@@ -76,3 +81,24 @@ export function Loading() {
     </div>
   );
 }
+
+
+
+export const PostCard4Loader = () => {  
+  return (
+    <div className="space-y-8">
+      {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((_, index) => (
+        <div key={index} className="animate-pulse">
+          <div className="space-y-4">
+            <div className=" h-48 bg-gray-200 rounded w-full"></div>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+//
+
+
+
+
