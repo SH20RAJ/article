@@ -25,10 +25,12 @@ export default function EditMain({ article }) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
+
         title,
         content,
         published: true,
         articleId: article.id,
+        
       }),
     })
       .then((res) => res.json())

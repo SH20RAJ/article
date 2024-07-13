@@ -11,9 +11,7 @@ export default async function page() {
     <div>
       <Nav />
       <div className="container flex sm:flex-row flex-col-reverse">
-
-       <Editing/>
-
+        <Editing />
       </div>
     </div>
   );

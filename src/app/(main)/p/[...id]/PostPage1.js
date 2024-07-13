@@ -30,7 +30,7 @@ export async function PostPage1({ id }) {
   return (
     <div className="flex flex-col min-h-screen max-w-full">
       <main className="flex-1 container w-full min-w-full max-w-full overflow-x-hidden md:flex gap-2 m-0 p-2 flex-row">
-        <div className="space-y-8 hidden md:block w-[20%]">
+        <div className="space-y-8 hidden md:block w-1/5">
           <SuggestedArticles />
           <Card>
             <CardHeader>
@@ -109,7 +109,7 @@ export async function PostPage1({ id }) {
             </CardContent>
           </Card>
         </div>
-        <div className="space-y-8 flex-1 ">
+        <div className="space-y-8 flex-1 w-3/5 ">
           <Card>
             <CardHeader>
               <div className="flex items-center gap-4">
@@ -237,7 +237,7 @@ export async function PostPage1({ id }) {
           </Card>
 
         </div>
-        <div className="space-y-8 md:mx-5">
+        <div className="space-y-8   w-1/5">
           <UserCard user={article?.author} />
           <Card>
             <CardHeader>
